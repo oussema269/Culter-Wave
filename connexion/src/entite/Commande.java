@@ -12,18 +12,102 @@ import java.util.Date;
  * @author asus
  */
 public class Commande {
-private int id,id_client,etat;
+private int id,id_client,quantite,etat;
     private Date dateP;
+    double prix,totale;
+    String nomProduit,nom_Client,adresse;
+   public Commande(int id,int id_client, int etat, Date dateP, double totale) {
+        this.id=id;
+        this.id_client = id_client;
+        this.etat = etat;
+        this.dateP = dateP;
+        this.totale = totale;
+    }
+    public Commande(int id_client, int etat, Date dateP, double totale) {
+        this.id_client = id_client;
+        this.etat = etat;
+        this.dateP = dateP;
+        this.totale = totale;
+    }
+  public Commande(int id_client, int etat, double totale) {
+        this.id_client = id_client;
+        this.etat = etat;
+        this.totale = totale;
+    }
+    public double getTotale() {
+        return totale;
+    }
+
+    public void setTotale(double totale) {
+        this.totale = totale;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+    
+
+    public Commande(int id, int id_client, int quantite, int etat, Date dateP, double prix, String nomProduit, String nom_Client) {
+        this.id = id;
+        this.id_client = id_client;
+        this.quantite = quantite;
+        this.etat = etat;
+        this.dateP = dateP;
+        this.prix = prix;
+        this.nomProduit = nomProduit;
+        this.nom_Client = nom_Client;
+    }
+
+    public String getNom_Client() {
+        return nom_Client;
+    }
+
+    public void setNom_Client(String nom_Client) {
+        this.nom_Client = nom_Client;
+    }
+
+    public int getQuantite() {
+        return quantite;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public String getNomProduit() {
+        return nomProduit;
+    }
+
+    public void setNomProduit(String nomProduit) {
+        this.nomProduit = nomProduit;
+    }
 public Commande( int id,int id_client, Date dateP, int etat) {
        this.id=id;
         this.id_client = id_client;
         this.dateP = dateP;
         this.etat=etat;
     }
-    public Commande( int id,int id_client, Date dateP) {
-       this.id=id;
+
+    public Commande(int id, int id_client, Date dateP) {
+        this.id = id;
         this.id_client = id_client;
         this.dateP = dateP;
+    }
+    public Commande( int id_client , int etat) {
+        this.id_client = id_client;
+        this.etat=etat;
     }
   public Commande( int id_client) {
        

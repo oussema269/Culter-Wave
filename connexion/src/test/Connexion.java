@@ -25,30 +25,32 @@ public class Connexion {
     public static void main(String[] args) {
         List<Panier> pan = new ArrayList<Panier>();
         CommandeService c =new CommandeService();
-        Commande co =new Commande(22);        
+        Commande co =new Commande(22,0,20);        
         Commande co1 =new Commande(23); 
-        Panier p =new Panier(22,33,66);
-        Panier p1 =new Panier(23,33,1);
-        Panier p2 =new Panier(24,34,88);
-        Panier p3 =new Panier(22,34,2);
+        Panier p =new Panier(22,33,8);
+        Panier p1 =new Panier(23,34,4);
+        Panier p2 =new Panier(24,34,3);
+        Panier p3 =new Panier(24,33,2);
         PanierService ps=new PanierService();
-       //ps.ajouter(p);       
+        ps.ajouter(p1);   
+        //ps.decrementQuantite(24,34);
          //ps.modifier(p1,p2);
-       // ps.supprimer(p3.getId_client());
-        //System.out.println( "p2 = "+ps.afficher(p2.getId_client())+"\n p=" +ps.afficher(p.getId_client())+"\n p1="+ps.afficher(p1.getId_client())+ "\n p3="+ps.afficher(p3.getId_client()));
-        System.out.println(ps.sommeProduit(p1.getId_client()));
+       //ps.supprimer(24);
+       //System.out.println( "p1 = "+ps.getPanier(p1.getId_client()));
+       // System.out.println(ps.sommeProduit(p1.getId_client()));
         //ps.trierParPrix();
         //ps.trierParQuantite();
     //c.ajouter(co);
         //c.modifier(co1);
        // System.out.println(c.afficher());
         //System.out.println( ps.afficher());
-       //c.ajouter(co);
-       /* System.out.println(c.afficher(co.getId_client()));
-        c.modifierEtat(1, co.getId_client());
-        c.payer(co.getId_client());
+       //c.ajouterC(co);
+        //System.out.println(c.afficher(co.getId_client()));
+        c.modifierEtat(0, 42);
+      //  c.payer(co.getId_client());
       
-    */
+       // System.out.println( c.getCommannde());
+   
        // System.out.println(ps.afficher(p.getId_client()));
     }
 }

@@ -1,0 +1,55 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+/* Style de base pour le menu */
+.menu-bar {
+  -fx-background-color: #3f51b5;
+  -fx-text-fill: #fff;
+}
+
+/* Style pour les items de menu */
+.menu-item {
+  -fx-background-color: transparent;
+  -fx-text-fill: #fff;
+  -fx-font-size: 14px;
+  -fx-padding: 10px 20px;
+}
+
+/* Style pour les items de menu lorsqu'ils sont survolés */
+.menu-item:hover {
+  -fx-background-color: #5c6bc0;
+}
+
+/* Style pour les items de menu sélectionnés */
+.menu-item:selected {
+  -fx-background-color: #5c6bc0;
+}
+
+/* Style pour le séparateur de menu */
+.menu-item:separator {
+  -fx-background-color: #3f51b5;
+}
+
+/* Style pour le menu déroulant */
+.menu {
+  -fx-background-color: #fff;
+  -fx-border-color: #3f51b5;
+  -fx-border-width: 2px;
+}
+
+/* Style pour les items de menu dans le menu déroulant */
+.menu-item > .label {
+  -fx-text-fill: #3f51b5;
+  -fx-font-size: 14px;
+  -fx-padding: 10px 20px;
+}
+
+/* Style pour les items de menu dans le menu déroulant lorsqu'ils sont survolés */
+.menu-item:hover > .label {
+  -fx-text-fill: #fff;
+  -fx-background-color: #3f51b5;
+}
+
+}

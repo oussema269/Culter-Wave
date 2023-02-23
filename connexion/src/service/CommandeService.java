@@ -8,6 +8,7 @@ package service;
 import utils.MyConnection;
 import service.InterfaceService;
 import entite.Commande;
+import entite.Panier;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +26,10 @@ public class CommandeService implements InterfaceService<Commande> {
 
     Connection conn = MyConnection.getInstance().getConnection();
       public List<Commande> afficher() {
+List<Commande> pers = new ArrayList<Commande>();
+return pers;
+      }
+       public List<Commande> getCommannde() {
            List<Commande> pers = new ArrayList<Commande>();
         try {
             Statement st = conn.createStatement();
@@ -36,7 +41,7 @@ public class CommandeService implements InterfaceService<Commande> {
             ResultSet result = st.executeQuery(req);
 
             while (result.next()) {
-                Commande resultc = new Commande(result.getInt(1),result.getInt(2), result.getDate(3));
+                Commande resultc = new Commande(result.getInt(1),result.getInt(2),result.getInt(4), result.getDate(3),result.getDouble(5));
                 pers.add(resultc);
             }
 
@@ -45,22 +50,26 @@ public class CommandeService implements InterfaceService<Commande> {
         }
         return pers;
          }
-    public List<Commande> afficher(int id_client) {
-        List<Commande> pers = new ArrayList<Commande>();
+    /*public List<Panier> getProduct(int id_client) {
+        List<Panier> pers = new ArrayList<Panier>();
         try {
             Statement st = conn.createStatement();
 
-            String req = "SELECT c.idc ,c.id_client ,c.date ,u.nom "+
-                    "FROM commande c " +
-                     "JOIN user u ON c.id_client = u.id_user "+
-                    " WHERE id_client='"+id_client+"'";
-                    
+            String req = "SELECT p.id_client, p.id_product,p.quantite, c.nom, pr.prix, pr.nom "
+                    + "FROM panier p "
+                    + "JOIN user c ON p.id_client = c.id_user "
+                    + "JOIN product pr ON p.id_product = pr.id_product "
+                    + "WHERE p.id_client = '" + id_client + "' ";
 
             ResultSet result = st.executeQuery(req);
 
             while (result.next()) {
-                Commande resultc = new Commande(result.getInt(1),result.getInt(2), result.getDate(3));
-                pers.add(resultc);
+                Panier p=new Panier(result.getInt(2),result.getInt(3),result.getString(6),result.getInt(5),result.getString(4));
+                
+               pers.add(p);
+                
+               // System.out.println(+result.getInt(1)+"\n"+ result.getInt(2)+"\n"+ result.getInt(3)+"\n"+result.getString(4)+"\n"+result.getInt(5)+"\n"+result.getString(6));
+
             }
 
         } catch (SQLException ex) {
@@ -68,18 +77,31 @@ public class CommandeService implements InterfaceService<Commande> {
         }
         return pers;
     }
-
+*/
     @Override
     public void ajouter(Commande c) {
+    }
+    
+         public List<Commande> ajouterC(Commande c) {
+          List<Commande> commande = new ArrayList<Commande>();
         try {
-            
             Statement st=conn.createStatement();
-            String qry= " INSERT INTO `commande` ( `id_client`, `date`) VALUES ('"+c.getId_client()+"', NOW()) ";
+            String qry= " INSERT INTO `commande` ( `id_client`, `date` , etat,totale) VALUES ('"+c.getId_client()+"', NOW(),'"+c.getEtat()+"' ,'"+c.getTotale()+"') ";
             st.executeUpdate(qry);
             System.out.println("mrigel ye brooo ");
+
+            //String req = "SELECT etat from commande WHERE id_client='"+c.getId_client()+"'";
+              ResultSet result = st.executeQuery(qry);
+            //System.out.println("payer lhamdouleh");
+            while (result.next()) {
+               Commande c1 =new Commande(result.getInt(1),result.getInt(3),result.getDate(2),result.getDouble(4));
+               commande.add(c1);
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+       
+        return commande;
     }
 
     @Override
@@ -96,12 +118,12 @@ public class CommandeService implements InterfaceService<Commande> {
         
       
     }
-    public void modifierEtat(int etat , int id_client)
+    public void modifierEtat(int etat , int idc)
     {
          Statement ste;
-        try {
+        try {    
             ste = conn.createStatement();
-             String qry="UPDATE `commande` SET `etat`=1 WHERE id_client= '" + id_client + "' ";
+String qry="UPDATE `commande` SET `etat`='"+etat+"' WHERE idc= '" + idc + "' ";
         ste.executeUpdate(qry);
           System.out.println("modifieretat");
         } catch (SQLException ex) {
@@ -116,7 +138,7 @@ public class CommandeService implements InterfaceService<Commande> {
 
             String req = "SELECT etat from commande WHERE id_client='"+id_client+"'";
               ResultSet result = st.executeQuery(req);
-System.out.println("payer lhamdouleh");
+            System.out.println("payer lhamdouleh");
             while (result.next()) {
                 if(result.getInt(1)==1)
                 {
@@ -137,7 +159,7 @@ System.out.println("payer lhamdouleh");
           Statement ste;
         try {
             ste = conn.createStatement();
-            String qry = "DELETE FROM `commande` WHERE id_client='" + i + "'";
+            String qry = "DELETE FROM `commande` WHERE idc='" + i + "'";
             ste.executeUpdate(qry);
             System.out.println("mrigel ye lhob ");
         } catch (SQLException ex) {

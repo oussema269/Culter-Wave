@@ -12,7 +12,35 @@ package entite;
 public class User {
     
     private int id_client;
-    private String nom;
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public User(int id_client, String nom, String adresse, String email) {
+        this.id_client = id_client;
+        this.nom = nom;
+        this.adresse = adresse;
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id_client=" + id_client + ", nom=" + nom + ", adresse=" + adresse + ", email=" + email + '}';
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    private String nom,adresse,email;
 
     public User(int id_client, String nom) {
         this.id_client = id_client;
