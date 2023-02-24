@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.workshop.GUI.FXMLcategorieController">
+   <children>
+      <VBox layoutX="14.0" layoutY="144.0" prefHeight="80.0" prefWidth="126.0" spacing="20.0">
+         <children>
+            <Label text="catégorie">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="119.0" layoutY="147.0" prefHeight="93.0" prefWidth="206.0" spacing="20.0">
+         <children>
+            <TextField id="tfNomCategorie" fx:id="tfCategorie" />
+         </children>
+      </VBox>
+      <TableView id="tvCategorie" fx:id="tvCategorie" layoutX="434.0" layoutY="50.0" prefHeight="268.0" prefWidth="295.0">
+        <columns>
+          <TableColumn id="colId_cat" fx:id="colId_cat" prefWidth="75.0" text="id" />
+          <TableColumn id="colCategorie" fx:id="colCategorie" prefWidth="75.0" text="catégorie" />
+        </columns>
+      </TableView>
+      <Button id="btnAjouter" fx:id="btnAjouter" layoutX="45.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Ajouter" />
+      <Button id="btnSupprimer" fx:id="btnSupprimer" layoutX="260.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Supprimer" />
+      <Button id="btnModifier" fx:id="btnModifier" layoutX="157.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Modifier" />
+      <Button fx:id="produitBtn" layoutX="315.0" layoutY="413.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Produit" />
+   </children>
+</AnchorPane>
