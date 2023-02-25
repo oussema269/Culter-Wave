@@ -18,7 +18,7 @@
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="TOP_CENTER" layoutX="-11.0" layoutY="-10.0" prefHeight="586.0" prefWidth="267.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="-10.0">
                <children>
                   <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -131,7 +131,7 @@
                   <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
                   <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
                   <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-                  <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0">
+                  <Pane fx:id="bord" prefHeight="608.0" prefWidth="794.0">
                      <children>
                         <TextField layoutX="590.0" layoutY="47.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                         <Label layoutX="57.0" layoutY="25.0" text="Restaurant Orders" textFill="#e7e5e5">
@@ -186,11 +186,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="45.0" layoutY="178.0" prefHeight="42.0" prefWidth="712.0" spacing="80.0" style="-fx-background-color: #02030A;">
                            <children>
-                              <Label text="ID_Client" textFill="#e7e5e5">
-                                 <HBox.margin>
-                                    <Insets left="50.0" />
-                                 </HBox.margin>
-                              </Label>
+                              <Label text="Nom_Client" textFill="#e7e5e5" />
                               <Label text="email" textFill="#e7e5e5">
                                  <HBox.margin>
                                     <Insets />
@@ -203,14 +199,16 @@
                               <Image url="@../images/icons8_Search_52px.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="386.0" layoutY="275.0" mnemonicParsing="false" onAction="#payer" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" stylesheets="@style.css" text="payer" />
-                        <TextField fx:id="idC" layoutX="57.0" layoutY="220.0" prefHeight="27.0" prefWidth="111.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="ID_Client" />
-                        <TextField fx:id="nomC" layoutX="55.0" layoutY="332.0" prefHeight="27.0" prefWidth="111.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="Nom_Client" />
-                        <TextField fx:id="adrsse" layoutX="195.0" layoutY="332.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="adresse" />
-                        <TextField fx:id="email" layoutX="194.0" layoutY="220.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="email" />
-                        <AnchorPane layoutX="68.0" layoutY="496.0" prefHeight="35.0" prefWidth="177.0" />
-                        <Label layoutX="82.0" layoutY="300.0" text="Nom_Client" textFill="#e7e5e5" />
-                        <Label layoutX="225.0" layoutY="300.0" text="adresse" textFill="#e7e5e5" />
+                        <Button layoutX="85.0" layoutY="473.0" mnemonicParsing="false" onAction="#payer" prefHeight="27.0" prefWidth="82.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" stylesheets="@style.css" text="payer" />
+                        <TextField fx:id="nomC" layoutX="23.0" layoutY="220.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="Nom_Client" />
+                        <TextField fx:id="numeroCarte" layoutX="153.0" layoutY="302.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="numéro de la cart" />
+                        <TextField fx:id="email" layoutX="153.0" layoutY="220.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="email" />
+                        <Label layoutX="167.0" layoutY="280.0" prefHeight="17.0" prefWidth="111.0" text="numéro de la cart" textFill="#e7e5e5" />
+                        <TextField fx:id="adrsse" layoutX="23.0" layoutY="302.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="adresse" />
+                        <Label layoutX="57.0" layoutY="280.0" text="adresse" textFill="#e7e5e5" />
+                        <TextField fx:id="codeSecurite" layoutX="23.0" layoutY="375.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="codeSecurite" />
+                        <Label layoutX="43.0" layoutY="353.0" text="codeSecurite" textFill="#e7e5e5" />
+                        <Button layoutX="192.0" layoutY="375.0" mnemonicParsing="false" onAction="#payer1" prefHeight="27.0" prefWidth="82.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" stylesheets="@style.css" text="payer" />
                      </children>
                   </Pane>
                </children>

@@ -5,13 +5,19 @@
  */
 package Commande.GUI;
 
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+import com.stripe.param.ChargeCreateParams;
 import entite.Commande;
 import entite.Panier;
 import entite.User;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,16 +61,14 @@ public class CheckoutController implements Initializable {
     private Pane pnlOrders;
     @FXML
     private Pane pnlMenus;
-    @FXML
-    private Pane pnlOverview;
-    @FXML
     private TextField idC;
     @FXML
     private TextField nomC;
     private TextField nomP;
     @FXML
     private Label nomClient;
-AnchorPane bord = new AnchorPane();
+    @FXML
+Pane bord = new AnchorPane();
     @FXML
     private Button Checkout;
     @FXML
@@ -76,6 +80,10 @@ AnchorPane bord = new AnchorPane();
     private TextField email;
     @FXML
     private Label total;
+    @FXML
+    private TextField numeroCarte;
+    @FXML
+    private TextField codeSecurite;
     /**
      * Initializes the controller class.
      */
@@ -91,7 +99,6 @@ AnchorPane bord = new AnchorPane();
         // Ajoute des données à afficher dans le Pane
         for (User p : pers) {
            
-            idC.setText(String.valueOf(p.getId_client()));
             email.setText(p.getEmail());
             adrsse.setText(p.getAdresse());
             nomC.setText(p.getNom());
@@ -117,19 +124,7 @@ AnchorPane bord = new AnchorPane();
         }
 */    
 }
-    public boolean isValidEmail(String email) {
-    if (email == null || email.isEmpty()) {
-        return false;
-    }
-    
-    // Expression régulière pour valider une adresse e-mail
-    String emailRegex = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-    
-    Pattern pattern = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
-    Matcher matcher = pattern.matcher(email);
-    
-    return matcher.matches();
-}
+
     @FXML
     private void payer(ActionEvent event) {
       Commande co =new Commande(Integer.parseInt(idC.getText()),1,Double.parseDouble(total.getText()));        
@@ -139,7 +134,7 @@ AnchorPane bord = new AnchorPane();
 // Vérifier si l'email est valide en utilisant une expression régulière
 Pattern pattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
 Matcher matcher = pattern.matcher(email1);
-if(email.getText().isEmpty()||adrsse.getText().isEmpty()||idC.getText().isEmpty()||nomC.getText().isEmpty())
+if(email.getText().isEmpty()||adrsse.getText().isEmpty()||nomC.getText().isEmpty())
 {
    System.out.println("erreur");
 }
@@ -154,4 +149,23 @@ c.ajouterC(co);
     }
 
     }
+
+
+
+    @FXML
+    private void payer1(ActionEvent event) {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
+        try{
+            Parent root = loader.load();
+            bord.getChildren().setAll(root);
+           
+           }
+        catch(IOException ex){
+            System.out.println(ex);                                                                     
+        }
+
+    }
+    
+    
+    
 }

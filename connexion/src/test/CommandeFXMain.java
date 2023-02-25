@@ -31,7 +31,7 @@ public class CommandeFXMain extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
             
-        } catch (IOException ex) {
+         } catch (IOException ex) {
             System.out.println("Err"+ex.getMessage());
               ex.printStackTrace();
         }

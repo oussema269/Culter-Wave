@@ -16,8 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="Commande.GUI.CommandeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Commande.GUI.CommandeController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;">
          <children>
@@ -218,7 +217,7 @@
                            <content>
                               <BorderPane prefHeight="200.0" prefWidth="200.0">
                                  <right>
-                                    <VBox fx:id="VboxCommande" alignment="TOP_RIGHT" prefHeight="318.0" prefWidth="735.0" style="-fx-background-color: #02030A;" BorderPane.alignment="CENTER" />
+                                    <VBox fx:id="VboxCommande" alignment="TOP_RIGHT" prefHeight="258.0" prefWidth="768.0" style="-fx-background-color: #02030A;" BorderPane.alignment="CENTER" />
                                  </right>
                               </BorderPane>
                            </content>
