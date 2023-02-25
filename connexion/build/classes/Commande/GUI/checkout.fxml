@@ -208,7 +208,7 @@
                         <Label layoutX="57.0" layoutY="280.0" text="adresse" textFill="#e7e5e5" />
                         <TextField fx:id="codeSecurite" layoutX="23.0" layoutY="375.0" prefHeight="27.0" prefWidth="121.0" promptText="search" style="-fx-background-color: #02030A; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" text="codeSecurite" />
                         <Label layoutX="43.0" layoutY="353.0" text="codeSecurite" textFill="#e7e5e5" />
-                        <Button layoutX="192.0" layoutY="375.0" mnemonicParsing="false" onAction="#payer1" prefHeight="27.0" prefWidth="82.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" stylesheets="@style.css" text="payer" />
+                        <Button fx:id="stripe" layoutX="192.0" layoutY="375.0" mnemonicParsing="false" onAction="#payer1" prefHeight="27.0" prefWidth="82.0" style="-fx-border-color: #2A73FF; -fx-border-radius: 20; -fx-background-color: transparent;" stylesheets="@style.css" text="payer" />
                      </children>
                   </Pane>
                </children>

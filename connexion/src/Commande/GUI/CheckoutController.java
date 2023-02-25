@@ -26,6 +26,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,6 +36,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import service.CommandeService;
 import service.PanierService;
+import javafx.stage.Stage;
+
 
 /**
  * FXML Controller class
@@ -84,6 +87,8 @@ Pane bord = new AnchorPane();
     private TextField numeroCarte;
     @FXML
     private TextField codeSecurite;
+    @FXML
+    private Button stripe;
     /**
      * Initializes the controller class.
      */
@@ -154,7 +159,54 @@ c.ajouterC(co);
 
     @FXML
     private void payer1(ActionEvent event) {
-          FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
+        
+        
+        
+        
+        
+        
+         // Récupérer la scène actuelle
+       /* Scene checkoutScene = stripe.getScene();
+
+        // Définir l'entier que vous souhaitez passer
+        double montant = Double.parseDouble(total.getText());
+
+        // Charger la nouvelle scène
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
+        Parent fxmlParent;
+        try {
+            fxmlParent = loader.load();
+        } catch (IOException ex) {
+            System.out.println(ex);
+            return;
+        }
+        Scene fxmlScene = new Scene(fxmlParent);
+
+        // Récupérer le contrôleur de la nouvelle scène
+        FXMLController fxmlController = loader.getController();
+
+        // Passer l'entier au contrôleur de la nouvelle scène
+      //  fxmlController.setMontant(montant);
+
+        // Changer la scène
+        Stage currentStage = (Stage) stripe.getScene().getWindow();
+        currentStage.setScene(fxmlScene);
+        
+    }
+     */   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+    
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
         try{
             Parent root = loader.load();
             bord.getChildren().setAll(root);
@@ -163,9 +215,9 @@ c.ajouterC(co);
         catch(IOException ex){
             System.out.println(ex);                                                                     
         }
-
+        
     }
-    
+   
     
     
 }
