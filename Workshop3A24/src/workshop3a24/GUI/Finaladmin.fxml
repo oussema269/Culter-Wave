@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="676.0" prefWidth="1351.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.FinaladminController">
+    
+<stylesheets>
+        <URL value="@gesionproduit.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="12.0" layoutY="105.0" prefHeight="54.0" prefWidth="335.0" style="-fx-background-color: #3A98B9;" text="Search:" textFill="WHITE">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Pane layoutX="20.0" layoutY="156.0" prefHeight="396.0" prefWidth="391.0" style="-fx-background-color: #3A98B9;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="513.0" AnchorPane.topAnchor="156.0">
+         <children>
+            <Label layoutX="37.0" layoutY="58.0" text="Titre" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="166.0" text="Debut" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="113.0" text="Description" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="titrefx" layoutX="168.0" layoutY="61.0" />
+            <TextField fx:id="descriptionfx" layoutX="168.0" layoutY="116.0" />
+            <Label layoutX="41.0" layoutY="222.0" text="Pays" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="paysfx" layoutX="167.0" layoutY="228.0" prefWidth="150.0" />
+            <Label layoutX="41.0" layoutY="274.0" text="Type" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="typefx" layoutX="167.0" layoutY="280.0" prefWidth="150.0" />
+            <Label layoutX="40.0" layoutY="334.0" text="Fin" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="debutpicker" layoutX="163.0" layoutY="172.0" prefHeight="25.0" prefWidth="150.0" />
+            <DatePicker fx:id="finpicker" layoutX="167.0" layoutY="340.0" prefHeight="25.0" prefWidth="150.0" />
+         </children>
+      </Pane>
+      <TableView fx:id="table" layoutX="389.0" layoutY="156.0" prefHeight="396.0" prefWidth="895.0" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="22.0">
+        <columns>
+          <TableColumn fx:id="IDcol" prefWidth="52.00006103515625" text="ID" />
+          <TableColumn fx:id="TITREcol" prefWidth="83.199951171875" text="Titre" />
+            <TableColumn fx:id="DESCRIPTIONcol" prefWidth="138.4000244140625" text="Description" />
+            <TableColumn fx:id="debut" prefWidth="106.39996337890625" text="Date de Debut" />
+            <TableColumn fx:id="fin" prefWidth="94.4000244140625" text="Date de Fin" />
+            <TableColumn fx:id="Type" prefWidth="63.9998779296875" text="Type" />
+            <TableColumn fx:id="Pays" text="Pays" />
+            <TableColumn fx:id="iduser" prefWidth="105.59979248046875" text="Email" />
+            <TableColumn fx:id="name" prefWidth="105.59979248046875" text="name" />
+            <TableColumn fx:id="Conf" prefWidth="105.59979248046875" text="Confirmation" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnajouter" layoutX="20.0" layoutY="630.0" mnemonicParsing="false" onAction="#ajouter_Produit" prefHeight="44.0" prefWidth="143.0" style="-fx-background-color: #3c94d1;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnmodifier" layoutX="202.0" layoutY="628.0" mnemonicParsing="false" onAction="#modifier_Produit" prefHeight="46.0" prefWidth="143.0" style="-fx-background-color: #3c94d1;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnsupprimer" layoutX="373.0" layoutY="628.0" mnemonicParsing="false" onAction="#supprimer_Produit" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: #3c94d1;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      
+      <Button fx:id="accept" layoutX="895.0" layoutY="628.0" mnemonicParsing="false" onAction="#aceppt" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: #3c94d1;" text="accept" textFill="WHITE" AnchorPane.rightAnchor="293.5999999999999">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="refuser" layoutX="707.0" layoutY="628.0" mnemonicParsing="false" onAction="#refuserr" prefHeight="46.0" prefWidth="162.0" style="-fx-background-color: #3c94d1;" text="refuser" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <TextField fx:id="search" layoutX="134.0" layoutY="122.0" onKeyPressed="#filter" onKeyReleased="#filter" onKeyTyped="#filter" />
+      <DatePicker fx:id="filterbyDate" layoutX="133.0" layoutY="92.0" prefHeight="25.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
