@@ -7,6 +7,9 @@ package Commande.GUI;
 
 import entite.Commande;
 import entite.Panier;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +22,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.FileChooser;
 import service.CommandeService;
 
 /**
@@ -56,6 +61,14 @@ public class CommandeController implements Initializable {
     private Pane pnlOverview;
     @FXML
     private VBox VboxCommande;
+    @FXML
+    private Button stripe;
+    @FXML
+    private TextField fichier;
+    @FXML
+    private Button chercher;
+    @FXML
+    private TextField search;
 
     /**
      * Initializes the controller class.
@@ -154,5 +167,41 @@ if (result.isPresent() && result.get() == ButtonType.OK) {
     private void handleClicks(ActionEvent event) {
         
     }
-    
+
+    @FXML
+    private void generer(ActionEvent event) {
+    // Afficher la boîte de dialogue de sélection de fichiers
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Enregistrer les données");
+    File selectedFile = fileChooser.showSaveDialog(fichier.getScene().getWindow());
+
+    if (selectedFile != null) {
+        // Écrire des données dans le fichier sélectionné
+        try (PrintWriter writer = new PrintWriter(selectedFile)) {
+            // Écrire des données dans le fichier
+             List<Commande> pers = new ArrayList<Commande>();
+
+      CommandeService c =new CommandeService();
+      pers=c.getCommannde();
+      for (Commande p : pers) {
+            writer.println("Données à écrire dans le fichier \n"+ p.getId()+ "    " +p.getDateP()+ "       "+p.getEtat()+"    "+p.getTotale());
+      }
+        } catch (IOException ex) {
+            System.err.println("Erreur lors de l'écriture dans le fichier: " + ex.getMessage());
+        }
+    } else {
+        // L'utilisateur a annulé la sélection de fichier
+        System.out.println("La sélection de fichier a été annulée");
+    }
+    }
+
+    @FXML
+    private void chercher(ActionEvent event) {
+                     List<Commande> pers = new ArrayList<Commande>();     
+        CommandeService c =new CommandeService();
+         pers= c.chercherCommande(Integer.parseInt(search.getText()));
+             
+    }
 }
+    
+

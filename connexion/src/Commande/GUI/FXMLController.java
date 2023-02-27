@@ -28,7 +28,7 @@ import javafx.scene.control.TextField;
  * @author rassa
  */
 public class FXMLController implements Initializable {
-
+    private double montant;
     @FXML
     private TextField card;
     @FXML
@@ -40,6 +40,10 @@ public class FXMLController implements Initializable {
     @FXML
     private Button pay;
 
+   /* public FXMLController(double montant) {
+        this.montant = montant;
+    }
+*/
     /**
      * Initializes the controller class.
      */
@@ -55,7 +59,7 @@ public class FXMLController implements Initializable {
           if ((isValidVisaCardNo(card.getText()) && (!card.getText().isEmpty()) && (isNum(card.getText())))
                 && (!m_exp.getText().isEmpty()) && (isNum(m_exp.getText()))
                 && (parseInt(y_exp.getText()) >= LocalDate.now().getYear()) && (!y_exp.getText().isEmpty()) && (isNum(y_exp.getText())) && (isNum(cvc.getText()))) {
-             float f = (float) 3500.5;
+             float f = (float) 4000.5;
              int k =floatToInt(f);
           PaymentApi.pay(k);
 
@@ -98,5 +102,9 @@ public class FXMLController implements Initializable {
     public static int floatToInt(float value) {
     return (int) value;
 }
+
+    void setMontant(double montant) {
+        this.montant=montant;
+    }
     
 }

@@ -73,7 +73,7 @@ public class JavaApplication5 {
          
                 Stripe.apiKey ="sk_test_51K1TBAIBKkiTlXRIgX1qQhWhoWBv4IYaWpIXb0dml7OZjZtwjaxMtiILLjoEXupBoon5Zk810WAOkQvVYncB5C61009SjLwRZU"; // add your api key
     		Map<String, Object> params = new HashMap<>();
-		params.put("amount", 3000);
+		params.put("amount", 4000);
 		params.put("currency", "usd");
 		params.put("customer", "cus_NQK73dnV0DlkWG");
 

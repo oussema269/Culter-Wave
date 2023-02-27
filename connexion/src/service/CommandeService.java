@@ -166,5 +166,24 @@ String qry="UPDATE `commande` SET `etat`='"+etat+"' WHERE idc= '" + idc + "' ";
             System.out.println(ex.getMessage());
         }
     }
+    public List<Commande> chercherCommande(int idC)
+    {          List<Commande> commande = new ArrayList<Commande>();
+         Statement ste;
+        try {
+            ste = conn.createStatement();
+            String qry = "SELECT * FROM `commande` WHERE idc='" + idC+ "'";
+            ste.executeQuery(qry);
+            System.out.println("mrigel ye lhob ");
+              ResultSet result = ste.executeQuery(qry);
+            //System.out.println("payer lhamdouleh");
+            while (result.next()) {
+               Commande c1 =new Commande(result.getInt(1),result.getInt(2),result.getDate(3),result.getDouble(4));
+               commande.add(c1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return commande;
+    }
 
 }

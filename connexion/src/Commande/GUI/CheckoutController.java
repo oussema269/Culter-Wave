@@ -26,8 +26,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -36,8 +36,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import service.CommandeService;
 import service.PanierService;
-import javafx.stage.Stage;
-
 
 /**
  * FXML Controller class
@@ -132,7 +130,7 @@ Pane bord = new AnchorPane();
 
     @FXML
     private void payer(ActionEvent event) {
-      Commande co =new Commande(Integer.parseInt(idC.getText()),1,Double.parseDouble(total.getText()));        
+      Commande co =new Commande(23,1,Double.parseDouble(total.getText()));        
       CommandeService c =new CommandeService();
     String email1 = email.getText(); // Récupérer la saisie de l'utilisateur dans le champ de texte
 
@@ -142,15 +140,26 @@ Matcher matcher = pattern.matcher(email1);
 if(email.getText().isEmpty()||adrsse.getText().isEmpty()||nomC.getText().isEmpty())
 {
    System.out.println("erreur");
+   
+Alert alert = new Alert(AlertType.WARNING);
+alert.setTitle("Attention");
+alert.setHeaderText("champ vide!!");
+alert.setContentText("veuillez remplir tout champs");
+
+alert.showAndWait();
 }
 else
 {
 if (matcher.matches()) {
 c.ajouterC(co);
 } else {
-    System.out.println("erreur");}
-
-       
+    System.out.println("erreur");
+Alert alert = new Alert(AlertType.WARNING);
+alert.setTitle("Attention");
+alert.setHeaderText("email invalid");
+alert.setContentText("veuillez remplir le champ email convenablement");
+       alert.showAndWait();
+}
     }
 
     }
@@ -159,54 +168,8 @@ c.ajouterC(co);
 
     @FXML
     private void payer1(ActionEvent event) {
-        
-        
-        
-        
-        
-        
-         // Récupérer la scène actuelle
-       /* Scene checkoutScene = stripe.getScene();
-
-        // Définir l'entier que vous souhaitez passer
-        double montant = Double.parseDouble(total.getText());
-
-        // Charger la nouvelle scène
+       // FXMLController m=new FXMLController(Double.parseDouble(total.getText()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
-        Parent fxmlParent;
-        try {
-            fxmlParent = loader.load();
-        } catch (IOException ex) {
-            System.out.println(ex);
-            return;
-        }
-        Scene fxmlScene = new Scene(fxmlParent);
-
-        // Récupérer le contrôleur de la nouvelle scène
-        FXMLController fxmlController = loader.getController();
-
-        // Passer l'entier au contrôleur de la nouvelle scène
-      //  fxmlController.setMontant(montant);
-
-        // Changer la scène
-        Stage currentStage = (Stage) stripe.getScene().getWindow();
-        currentStage.setScene(fxmlScene);
-        
-    }
-     */   
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-       
-    
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
         try{
             Parent root = loader.load();
             bord.getChildren().setAll(root);
@@ -214,10 +177,6 @@ c.ajouterC(co);
            }
         catch(IOException ex){
             System.out.println(ex);                                                                     
-        }
-        
+        }        
     }
-   
-    
-    
 }

@@ -25,7 +25,7 @@ public class CommandeFXMain extends Application {
     @Override
     public void start(Stage primaryStage) {
                 try {
-                Parent root=FXMLLoader.load(getClass().getResource("../Commande/GUI/Panier.fxml"));
+                Parent root=FXMLLoader.load(getClass().getResource("../Commande/GUI/Commande.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setTitle("Panier");
             primaryStage.setScene(scene);
