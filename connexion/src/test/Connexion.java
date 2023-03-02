@@ -28,7 +28,7 @@ public class Connexion {
         Commande co =new Commande(22,0,20);        
         Commande co1 =new Commande(23); 
         Panier p =new Panier(22,33,8);
-        Panier p1 =new Panier(23,34,4);
+        Panier p1 =new Panier(23,33,4);
         Panier p2 =new Panier(24,34,3);
         Panier p3 =new Panier(24,33,2);
         PanierService ps=new PanierService();
@@ -46,12 +46,15 @@ public class Connexion {
         //System.out.println( ps.afficher());
        //c.ajouterC(co);
         //System.out.println(c.afficher(co.getId_client()));
-        c.modifierEtat(0, 42);
+        //c.modifierEtat(0, 42);
       //  c.payer(co.getId_client());
       
        // System.out.println( c.getCommannde());
    
        // System.out.println(ps.afficher(p.getId_client()));
+       // System.out.println(c.trierC());
+        System.out.println(c.chercherCommande(22));
+        
     }
 }
 

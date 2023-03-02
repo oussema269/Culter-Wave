@@ -177,13 +177,36 @@ String qry="UPDATE `commande` SET `etat`='"+etat+"' WHERE idc= '" + idc + "' ";
               ResultSet result = ste.executeQuery(qry);
             //System.out.println("payer lhamdouleh");
             while (result.next()) {
-               Commande c1 =new Commande(result.getInt(1),result.getInt(2),result.getDate(3),result.getDouble(4));
+               Commande c1 =new Commande(result.getInt(1),result.getInt(2),result.getInt(4),result.getDate(3),result.getDouble(5));
                commande.add(c1);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return commande;
+    }
+    public  List<Commande>  trierC()
+    {
+      List<Commande> commande = new ArrayList<Commande>();
+      
+          try {
+            Statement st = conn.createStatement();
+
+            String req = "SELECT * FROM commande "
+                    + " ORDER BY date ASC";
+
+            ResultSet result = st.executeQuery(req);
+              System.out.println("cbon");
+            while (result.next()) {
+               Commande c1 =new Commande(result.getInt(1),result.getInt(2),result.getInt(4),result.getDate(3),result.getDouble(5));
+               commande.add(c1);
+                System.out.println(c1);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+                  return commande;
     }
 
 }

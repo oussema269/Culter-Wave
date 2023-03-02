@@ -82,11 +82,9 @@ Pane bord = new AnchorPane();
     @FXML
     private Label total;
     @FXML
-    private TextField numeroCarte;
-    @FXML
-    private TextField codeSecurite;
-    @FXML
     private Button stripe;
+    @FXML
+    private TextField search;
     /**
      * Initializes the controller class.
      */
@@ -114,9 +112,8 @@ Pane bord = new AnchorPane();
     private void handleClicks(ActionEvent event) {
     }
 
-    @FXML
     private void Checkout(ActionEvent event) {
-         /* FXMLLoader loader = new FXMLLoader(getClass().getResource("checkout.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("panier.fxml"));
         try{
             Parent root = loader.load();
             bord.getChildren().setAll(root);
@@ -125,7 +122,7 @@ Pane bord = new AnchorPane();
         catch(IOException ex){
             System.out.println(ex);
         }
-*/    
+   
 }
 
     @FXML
@@ -170,13 +167,18 @@ alert.setContentText("veuillez remplir le champ email convenablement");
     private void payer1(ActionEvent event) {
        // FXMLController m=new FXMLController(Double.parseDouble(total.getText()));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
+        
         try{
             Parent root = loader.load();
             bord.getChildren().setAll(root);
-           
+           // FXMLController m=new FXMLController(Double.parseDouble(total.getText()));
            }
         catch(IOException ex){
             System.out.println(ex);                                                                     
         }        
+    }
+
+    @FXML
+    private void Panier(ActionEvent event) {
     }
 }
