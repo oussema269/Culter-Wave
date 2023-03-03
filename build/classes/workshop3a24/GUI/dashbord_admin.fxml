@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="525.0" prefWidth="1110.0" style="-fx-background-color: #e9ebf0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.Dashbord_adminController">
+   <children>
+      <Pane id="label22" layoutY="-1.0" prefHeight="526.0" prefWidth="256.0" stylesheets="@interfacelogin.css">
+         <children>
+            <Label id="labelA" layoutX="52.0" layoutY="18.0" prefHeight="37.0" prefWidth="140.0" stylesheets="@interfacelogin.css" text="Accueil Admin" textFill="#e9ebf0" underline="true">
+               <font>
+                  <Font name="Sitka Banner Bold" size="22.0" />
+               </font>
+            </Label>
+            <Button id="btn-Guser" fx:id="btnuser" layoutX="2.0" layoutY="106.0" mnemonicParsing="false" onMouseClicked="#Guser" prefHeight="51.0" prefWidth="249.0" stylesheets="@interfacelogin.css" text="Gestion d'utilisateur" />
+            <Button id="btn-Gevent" fx:id="btnevent" layoutX="2.0" layoutY="212.0" mnemonicParsing="false" onMouseClicked="#gevent" prefHeight="51.0" prefWidth="249.0" stylesheets="@interfacelogin.css" text="Gestion d'évenement" />
+            <Button id="btn-Gformation" layoutX="4.0" layoutY="332.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="249.0" stylesheets="@interfacelogin.css" text="Gestion d'formation" />
+            <Button id="btn-logout" fx:id="btnlogout" layoutX="41.0" layoutY="464.0" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="48.0" prefWidth="162.0" stylesheets="@interfacelogin.css" text="Déconnecter" />
+         </children>
+      </Pane>
+   </children>
+   
+</AnchorPane>
