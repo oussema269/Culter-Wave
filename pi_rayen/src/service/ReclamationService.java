@@ -53,7 +53,7 @@ public  class ReclamationService implements IService<Reclamation>{
 
     @Override
     public void delete(Reclamation t) {
-            String requete="DELETE from reclamation where id_reclamation = "+t.getid_reclamation() +";" ;
+            String requete="DELETE from reclamation where id_reclamation  = "+t.getid_reclamation()+";" ;
         try {
             Statement st=conn.createStatement();
             st.executeUpdate(requete);

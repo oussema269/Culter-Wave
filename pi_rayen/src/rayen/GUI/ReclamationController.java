@@ -38,6 +38,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Properties;
 import javafx.application.Application;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -54,7 +56,11 @@ import utils.DataSource;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
+import javax.mail.*;
+import javax.mail.internet.*;
 /**
  * FXML Controller class
  *
@@ -103,6 +109,10 @@ public class ReclamationController implements Initializable {
 
     @FXML
     private TableColumn<Reclamation, String> contenu2;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private ComboBox<String> sortBox = new ComboBox<>();
 
     /**
      * Initializes the controller class.
@@ -113,49 +123,53 @@ public class ReclamationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        ObservableList<String> items = FXCollections.observableArrayList(
+                "ID",
+                "type"
+                
+        );
+        sortBox.setItems(items);
+        
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> search());
+        sortBox.setOnAction(event -> sort());
         afficher();
 
     }
-
     @FXML
-    private void ajouter(ActionEvent event) {
-        try {
-
-            Reclamation r1 = new Reclamation(Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getText(), cont.getText());
-            ReclamationService rs = new ReclamationService();
-            rs.insert(r1);
-        } catch (NumberFormatException ex) {
-            Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+private void search() {
+    String query = searchField.getText();
+    ObservableList<Reclamation> filteredList = FXCollections.observableArrayList();
+    for (Reclamation reclamation : reclist) {
+        if (reclamation.gettype_reclamation().toLowerCase().contains(query.toLowerCase())) {
+            filteredList.add(reclamation);
         }
-        refresh();
     }
-
-    @FXML
-    private void modifier(ActionEvent event) {
-        try {
-            Reclamation r1 = new Reclamation(Integer.parseInt(idd.getText()), Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getText(), cont.getText());
-            ReclamationService rs = new ReclamationService();
-            rs.update(r1);
-        } catch (NumberFormatException ex) {
-            Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        refresh();
+    table.setItems(filteredList);
+}
+@FXML
+private void sort() {
+    String selectedOption = sortBox.getValue();
+    if (selectedOption == null) {
+        return;
     }
-
-    @FXML
-    private void sup(ActionEvent event) {
-        try {
-            Reclamation r1 = new Reclamation(Integer.parseInt(idd.getText()), Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getText(), cont.getText());
-            ReclamationService rs = new ReclamationService();
-            rs.delete(r1);
-        } catch (NumberFormatException ex) {
-            Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        refresh();
-
+    switch (selectedOption) {
+        case "ID":
+            reclist.sort((p1, p2) -> Integer.compare(p1.getid_reclamation(), p2.getid_reclamation()));
+            break;
+        case "type":
+            reclist.sort((p1, p2) -> p1.gettype_reclamation().compareToIgnoreCase(p2.gettype_reclamation()));
+            break;
+        
+        default:
+            break;
     }
+    table.setItems(reclist);
+}
+    
+
+
+
+
 
     @FXML
     private void afficher() {
@@ -239,6 +253,148 @@ public class ReclamationController implements Initializable {
         id_cible_reclamation1.setText(String.valueOf(clicked.getid_cible_reclamation()));
         type1.setText(String.valueOf(clicked.gettype_reclamation()));
         cont.setText(String.valueOf(clicked.getcontenu()));
+
+    }
+    @FXML
+    private void checkadd() {
+
+        String testidrec = idd.getText();
+        String testidreclamateur = id_reclamateur1.getText();
+        String testciblerec = id_cible_reclamation1.getText();
+        String testtype = type1.getText();
+        String testconenu = cont.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+         if (testidrec.isEmpty()) {
+            id_reclamateur1.setText("choisis une reclamation");
+        } else if (testidreclamateur.isEmpty()) {
+            id_reclamateur1.setText("ici");
+        } else if (testciblerec.isEmpty()) {
+            id_cible_reclamation1.setText("ici");
+        } else if (testtype.isEmpty()) {
+            type1.setText("ici");
+        } else if (testconenu.isEmpty()) {
+            cont.setText("ici");
+        }else {
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                try {
+
+                    Reclamation r1 = new Reclamation( Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getText(), cont.getText());
+                    ReclamationService rs = new ReclamationService();
+                    rs.insert(r1);
+                    handle();
+                } catch (NumberFormatException ex) {
+                    Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                refresh();
+            }
+
+        }
+
+    }
+    public void handle() {
+        // Recipient's email address
+        String to = "rayen.khalfaoui@esprit.tn";
+        // Sender's email address
+        String from = "culturewave2a14@outlook.com";
+        // Sender's email password
+        String password = "aqwzsx@123456";
+
+        // Setup mail server properties
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.office365.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        // Create a new session with an authenticator
+        Session session;
+        session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        });
+        try {
+            // Create a new message
+            Message message = new MimeMessage(session);
+            // Set the sender, recipient, subject and body of the message
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject("Creaction Reclamation");
+            message.setText("Votre Reclamation a etait crée!");
+
+            // Send the message
+            Transport.send(message);
+            System.out.println("Email sent successfully!");
+
+        } catch (MessagingException e) {
+            System.out.println("Failed to send email. Error message: " + e.getMessage());
+        }
+    }
+    @FXML
+    private void checkmod() {
+
+        String testidrec = idd.getText();
+        String testidreclamateur = id_reclamateur1.getText();
+        String testciblerec = id_cible_reclamation1.getText();
+        String testtype = type1.getText();
+        String testconenu = cont.getText();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+         if (testidrec.isEmpty()) {
+            id_reclamateur1.setText("choisis une reclamation");
+        } else if (testidreclamateur.isEmpty()) {
+            id_reclamateur1.setText("ici");
+        } else if (testciblerec.isEmpty()) {
+            id_cible_reclamation1.setText("ici");
+        } else if (testtype.isEmpty()) {
+            type1.setText("ici");
+        } else if (testconenu.isEmpty()) {
+            cont.setText("ici");
+        }else {
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                try {
+
+                    Reclamation r1 = new Reclamation(Integer.parseInt(idd.getText()), Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getText(), cont.getText());
+                    ReclamationService rs = new ReclamationService();
+                    rs.update(r1);
+                } catch (NumberFormatException ex) {
+                    Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                refresh();
+            }
+
+        }
+
+    }
+    @FXML
+    private void checkdel() {
+
+        String testidrec = idd.getText();
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+         if (testidrec.isEmpty()) {
+            id_reclamateur1.setText("choisis une reclamation");
+        } else {
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                try {
+
+                    Reclamation r1 = new Reclamation( Integer.parseInt(idd.getText()),Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getText(), cont.getText());
+                    ReclamationService rs = new ReclamationService();
+                    
+                    rs.delete(r1);
+                } catch (NumberFormatException ex) {
+                    Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                refresh();
+            }
+
+        }
 
     }
 
