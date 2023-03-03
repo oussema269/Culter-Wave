@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rayen.GUI.ReclamationController">
+     <children>
+      <Label layoutX="243.0" layoutY="6.0" text="Reclamation">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+      <TextField fx:id="id_reclamateur1" layoutX="61.0" layoutY="59.0" />
+      <TextField fx:id="id_cible_reclamation1" layoutX="61.0" layoutY="99.0" />
+      
+      <TextField fx:id="type1" layoutX="61.0" layoutY="140.0" />
+      <Button fx:id="btn_ajout" layoutX="81.0" layoutY="342.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="78.0" text="Ajouter" />
+      <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="votre id" />
+      <Text layoutX="12.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cible rec" />
+      <Text layoutX="13.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type rec" />
+      <Text layoutX="12.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contenu" />
+      <TableView fx:id="table" layoutX="215.0" layoutY="60.0" onMouseClicked="#selected" onMousePressed="#selected" prefHeight="261.0" prefWidth="371.0">
+        <columns>
+          <TableColumn fx:id="idrec" prefWidth="30.0" text="id" />
+          <TableColumn fx:id="reclamateur" prefWidth="73.0" text="reclamateur" />
+          <TableColumn fx:id="cible" prefWidth="42.0" text="cible" />
+          <TableColumn fx:id="type" prefWidth="68.0" text="type" />
+          <TableColumn fx:id="contenu2" prefWidth="228.0" text="contenu" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_modif" layoutX="241.0" layoutY="342.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="78.0" text="modifier" />
+      <Button fx:id="btn_supp" layoutX="417.0" layoutY="342.0" mnemonicParsing="false" onAction="#sup" prefHeight="25.0" prefWidth="78.0" text="supprimer" />
+      <TextField fx:id="cont" layoutX="61.0" layoutY="179.0" />
+      <TextField fx:id="idd" layoutX="123.0" layoutY="25.0" prefHeight="25.0" prefWidth="34.0" />
+      
+   </children>
+</AnchorPane>
