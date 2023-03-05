@@ -12,7 +12,7 @@ package entite;
 public class User {
     
     private int id_client;
-
+    
     public String getAdresse() {
         return adresse;
     }
@@ -23,7 +23,11 @@ public class User {
         this.adresse = adresse;
         this.email = email;
     }
-
+  public User( String nom, String adresse, String email) {
+        this.nom = nom;
+        this.adresse = adresse;
+        this.email = email;
+    }
     @Override
     public String toString() {
         return "User{" + "id_client=" + id_client + ", nom=" + nom + ", adresse=" + adresse + ", email=" + email + '}';

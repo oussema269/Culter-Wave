@@ -85,6 +85,15 @@ Pane bord = new AnchorPane();
     private Button stripe;
     @FXML
     private TextField search;
+    int id_client;
+
+    public int getId_client() {
+        return id_client;
+    }
+
+    public void setId_client(int id_client) {
+        this.id_client = id_client;
+    }
     /**
      * Initializes the controller class.
      */
@@ -93,7 +102,7 @@ Pane bord = new AnchorPane();
         // TODO
           PanierService s = new PanierService();
         List<User> pers = new ArrayList<User>();
-        pers = s.getUser(23);//23 remplacer par client_id
+        pers = s.getUser(3);//23 remplacer par client_id
         
      
        
@@ -127,7 +136,19 @@ Pane bord = new AnchorPane();
 
     @FXML
     private void payer(ActionEvent event) {
-      Commande co =new Commande(23,1,Double.parseDouble(total.getText()));        
+     
+
+    }
+
+
+
+    @FXML
+    private void payer1(ActionEvent event) {
+       boolean check=false;
+       
+       while(check==false)
+       {
+ Commande co =new Commande(3,1,Double.parseDouble(total.getText()));        
       CommandeService c =new CommandeService();
     String email1 = email.getText(); // Récupérer la saisie de l'utilisateur dans le champ de texte
 
@@ -144,40 +165,52 @@ alert.setHeaderText("champ vide!!");
 alert.setContentText("veuillez remplir tout champs");
 
 alert.showAndWait();
+break;
 }
 else
 {
 if (matcher.matches()) {
 c.ajouterC(co);
+check=true;
 } else {
     System.out.println("erreur");
 Alert alert = new Alert(AlertType.WARNING);
 alert.setTitle("Attention");
 alert.setHeaderText("email invalid");
 alert.setContentText("veuillez remplir le champ email convenablement");
-       alert.showAndWait();
+alert.showAndWait();
+       break;
 }
     }
 
-    }
+       }
+// FXMLController m=new FXMLController(Double.parseDouble(total.getText()));
+if(check==true)
+{ 
+    
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
 
-
-
-    @FXML
-    private void payer1(ActionEvent event) {
-       // FXMLController m=new FXMLController(Double.parseDouble(total.getText()));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML.fxml"));
         
         try{
             Parent root = loader.load();
             bord.getChildren().setAll(root);
-           // FXMLController m=new FXMLController(Double.parseDouble(total.getText()));
-           }
+            
+
+
+        FXMLController controller = loader.getController();
+        controller.setMontant(Double.parseDouble(total.getText()));
+
+
+        total.getScene().setRoot(root);
+        }
         catch(IOException ex){
             System.out.println(ex);                                                                     
-        }        
-    }
+        }
 
+
+        
+    }
+    }
     @FXML
     private void Panier(ActionEvent event) {
     }

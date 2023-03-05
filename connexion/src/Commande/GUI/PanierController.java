@@ -95,7 +95,7 @@ public class PanierController implements Initializable {
         // TODO
         PanierService s = new PanierService();
         List<Panier> pers = new ArrayList<Panier>();
-        pers = s.getPanier(23);//23 remplacer par client_id
+        pers = s.getPanier(3);//23 remplacer par client_id
 
      
        
@@ -140,9 +140,9 @@ alert.setContentText("Cliquez sur OK pour confirmer.");
 Optional<ButtonType> result = alert.showAndWait();
 if (result.isPresent() && result.get() == ButtonType.OK) {
     Pane parent = (Pane) pane.getParent();
-    s.supprimerP(23,p.getId_product());
+    s.supprimerP(3,p.getId_product());
     parent.getChildren().remove(pane);
-       double resultat = s.sommeProduit(23);
+       double resultat = s.sommeProduit(3);
 total.setText(String.valueOf(resultat));
 }    
     
@@ -161,9 +161,9 @@ incrementButton.setOnAction(event -> {
     p.setQuantite(oldQuantite);
 productQuantiteLabel.setText("Quantité: " + oldQuantite);
     
-     s.incrementQuantite(23,p.getId_product());
+     s.incrementQuantite(3,p.getId_product());
      
-   double resultat = s.sommeProduit(23);
+   double resultat = s.sommeProduit(3);
 total.setText(String.valueOf(resultat));
 });
 
@@ -178,13 +178,13 @@ decrementButton.setOnAction(event -> {
     p.setQuantite(quantite);
 productQuantiteLabel.setText("Quantité: " + quantite);
   
-     s.decrementQuantite(23,p.getId_product());       
+     s.decrementQuantite(3,p.getId_product());       
      int newQuantity = p.getQuantite();
         if (newQuantity < oldQuantity) {
             System.out.println("aaa");
             productQuantiteLabel.setText("Quantité: " + newQuantity);
         }
-         double resultat = s.sommeProduit(23);
+         double resultat = s.sommeProduit(3);
 total.setText(String.valueOf(resultat));
     }
 });
@@ -219,7 +219,7 @@ total.setText(String.valueOf(resultat));
     private void ajouterP(ActionEvent event) {
           MouseEvent event1 = new MouseEvent(MouseEvent.MOUSE_CLICKED, 0, 0, 0, 0, MouseButton.PRIMARY, 1,
             false, false, false, false, true, false, false, true, false, false, null);
-        Panier p1 =new Panier(23,33,4);
+        Panier p1 =new Panier(35,33,4);
         Panier p2 =new Panier(24,34,3);
         PanierService ps=new PanierService();
         ps.ajouter(p2);
@@ -230,7 +230,7 @@ total.setText(String.valueOf(resultat));
 
     @FXML
     private void chercherP(InputMethodEvent event) {
-         Panier p1 =new Panier(23,33,4);
+         Panier p1 =new Panier(35,33,4);
         Panier p2 =new Panier(24,34,3);
         PanierService ps=new PanierService();
         //ps.chercher(chercherP.getText());
@@ -239,14 +239,23 @@ total.setText(String.valueOf(resultat));
 
     @FXML
     private void checkout(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("checkout.fxml"));
+       
+          int id=28;
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("checkout.fxml"));
+
+        
         try{
             Parent root = loader.load();
             bord.getChildren().setAll(root);
-           
-           }
+            CheckoutController controller = loader.getController();
+           // controller.setId_client(id);
+            
+            //bord.getScene().setRoot(root);
+                  System.out.println("ouuaatt");
+
+        }
         catch(IOException ex){
-            System.out.println(ex);                                                                     
+            System.out.println(ex.getMessage());                                                                     
         }
 
     }

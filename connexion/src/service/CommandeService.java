@@ -167,7 +167,7 @@ String qry="UPDATE `commande` SET `etat`='"+etat+"' WHERE idc= '" + idc + "' ";
         }
     }
     public List<Commande> chercherCommande(int idC)
-    {          List<Commande> commande = new ArrayList<Commande>();
+    {    List<Commande> commande = new ArrayList<Commande>();
          Statement ste;
         try {
             ste = conn.createStatement();
@@ -209,4 +209,6 @@ String qry="UPDATE `commande` SET `etat`='"+etat+"' WHERE idc= '" + idc + "' ";
                   return commande;
     }
 
+  
+    
 }

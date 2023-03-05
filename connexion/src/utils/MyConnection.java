@@ -9,7 +9,7 @@ package utils;
 import java.sql.*;
 public class MyConnection {
   private  Connection  conn;
-   String url = "jdbc:mysql://localhost:3306/test";
+   String url = "jdbc:mysql://localhost:3306/culterwave";
    String user = "root";
    String pwd = "";
    private static MyConnection instance;

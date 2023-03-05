@@ -61,9 +61,6 @@ public class CommandeController implements Initializable {
     private Pane pnlOverview;
     @FXML
     private VBox VboxCommande;
-    @FXML
-    private Button stripe;
-    @FXML
     private TextField fichier;
     @FXML
     private Button chercher;
@@ -178,7 +175,7 @@ if (result.isPresent() && result.get() == ButtonType.OK) {
     // Afficher la boîte de dialogue de sélection de fichiers
     FileChooser fileChooser = new FileChooser();
     fileChooser.setTitle("Enregistrer les données");
-    File selectedFile = fileChooser.showSaveDialog(fichier.getScene().getWindow());
+    File selectedFile = fileChooser.showSaveDialog(trier.getScene().getWindow());
 
     if (selectedFile != null) {
         // Écrire des données dans le fichier sélectionné
@@ -212,6 +209,7 @@ if (result.isPresent() && result.get() == ButtonType.OK) {
     }
     public void afficher(List<Commande> pers , VBox VboxCommande)
     {
+        CommandeService c =new CommandeService();
 
       for (Commande p : pers) {
     

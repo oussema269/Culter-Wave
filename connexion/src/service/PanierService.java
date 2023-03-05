@@ -54,10 +54,10 @@ public class PanierService implements InterfaceService<Panier> {
         try {
             Statement st = connection.createStatement();
 
-            String req = "SELECT p.id_client, p.id_product,p.quantite, c.nom, pr.prix, pr.nom "
+            String req = "SELECT p.id_client, p.id_product,p.quantite, c.Nom, pr.prix, pr.lib "
                     + "FROM panier p "
-                    + "JOIN user c ON p.id_client = c.id_user "
-                    + "JOIN product pr ON p.id_product = pr.id_product "
+                    + "JOIN user c ON p.id_client = c.Iduser  "
+                    + "JOIN produit pr ON p.id_product = pr.idprod "
                     + "WHERE p.id_client = '" + id_client + "' ";
 
             ResultSet result = st.executeQuery(req);
@@ -83,14 +83,14 @@ public class PanierService implements InterfaceService<Panier> {
         try {
             Statement st = connection.createStatement();
 
-            String req = "SELECT  p.id_product,p.quantite, pr.prix, pr.nom "
+            String req = "SELECT  p.id_product,p.quantite, pr.prix, pr.lib "
                     + "FROM panier p "
-                    + "JOIN user c ON p.id_client = c.id_user "
-                    + "JOIN product pr ON p.id_product = pr.id_product "
+                    + "JOIN user c ON p.id_client = c.Iduser  "
+                    + "JOIN produit pr ON p.id_product = pr.idprod "
                     + "WHERE p.id_client = '" + id_client + "' ";
-
+                        
             ResultSet result = st.executeQuery(req);
-
+               
             while (result.next()) {
 
                 somme += result.getInt(2) * result.getInt(3);
@@ -112,7 +112,7 @@ public class PanierService implements InterfaceService<Panier> {
         try {
             int idp=0;
             int quantite=0;
-            String req=" SELECT id_product , quantite FROM `panier` WHERE id_client='" +p.getId_client()+"'  ";
+            String req=" SELECT id_product , quantite FROM `panier` WHERE id_client='" +p.getId_client()+"'AND id_product= '"+p.getId_product()+"'  ";
               Statement ste = connection.createStatement();
             ste.executeQuery(req);
              ResultSet result = ste.executeQuery(req);
@@ -126,6 +126,7 @@ public class PanierService implements InterfaceService<Panier> {
              String qry = "INSERT INTO panier ( id_product,id_client, quantite) VALUES ('" + p.getId_product() + "', '" + p.getId_client() + "', '" + p.getQuantite() + "')";
             Statement st = connection.createStatement();
             st.executeUpdate(qry);
+            sommeProduit(p.getId_client());
             System.out.println("mnadhem heyy");
             }
             else{
@@ -155,20 +156,17 @@ public class PanierService implements InterfaceService<Panier> {
         }
 
     }
-    
-    
-    
-    
+
        public List<User> getUser(int id_client) {
 
         List<User> pers = new ArrayList<User>();
         try {
             Statement st = connection.createStatement();
 
-            String req = "SELECT p.id_client, c.nom ,c.adresse,c.email "
+            String req = "SELECT p.id_client, c.Nom ,c.Prenom,c.Email "
                     + "FROM panier p "
-                    + "JOIN user c ON p.id_client = c.id_user "
-                    + "JOIN product pr ON p.id_product = pr.id_product "
+                    + "JOIN user c ON p.id_client = c.Iduser  "
+                    + "JOIN produit pr ON p.id_product = pr.idprod "
                     + "WHERE p.id_client = '" + id_client + "' ";
 
             ResultSet result = st.executeQuery(req);
@@ -234,50 +232,7 @@ public class PanierService implements InterfaceService<Panier> {
             System.out.println(ex.getMessage());
         }
     }
-
- /*   public void trierParQuantite() {
-        try {
-            Statement st = connection.createStatement();
-
-            String req = "SELECT p.id_client, p.id_product,p.quantite, c.nom, pr.prix, pr.nom "
-                    + "FROM panier p "
-                    + "JOIN user c ON p.id_client = c.id_user "
-                    + "JOIN product pr ON p.id_product = pr.id_product "
-                    + " ORDER BY p.quantite ASC";
-
-            ResultSet result = st.executeQuery(req);
-
-            while (result.next()) {
-                System.out.println(+result.getInt(1) + "\n" + result.getInt(2) + "\n" + result.getInt(3) + "\n" + result.getString(4) + "\n" + result.getInt(5) + "\n" + result.getString(6));
-
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-  public void trierParPrix() {
-        try {
-            Statement st = connection.createStatement();
-
-            String req = "SELECT p.id_client, p.id_product,p.quantite, c.nom, pr.prix, pr.nom "
-                    + "FROM panier p "
-                    + "JOIN user c ON p.id_client = c.id_user "
-                    + "JOIN product pr ON p.id_product = pr.id_product "
-                    + " ORDER BY pr.prix ASC";
-
-            ResultSet result = st.executeQuery(req);
-
-            while (result.next()) {
-                System.out.println(+result.getInt(1) + "\n" + result.getInt(2) + "\n" + result.getInt(3) + "\n" + result.getString(4) + "\n" + result.getInt(5) + "\n" + result.getString(6));
-
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-*/
+ 
   public void decrementQuantite(int id_client , int id_product)
   {
       try {
@@ -367,7 +322,15 @@ public class PanierService implements InterfaceService<Panier> {
 
     @Override
     public void supprimer(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Statement ste;
+        try {
+            ste = connection.createStatement();
+            String qry = "DELETE FROM `panier` WHERE id_client='" + i + "'";
+            ste.executeUpdate(qry);
+            System.out.println("mrigel ye lhob  ");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }

@@ -8,6 +8,8 @@ package Commande.GUI;
 
 
 import com.stripe.exception.StripeException;
+import entite.Commande;
+import entite.User;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.nio.CharBuffer;
@@ -21,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import service.CommandeService;
 
 /**
  * FXML Controller class
@@ -28,7 +31,6 @@ import javafx.scene.control.TextField;
  * @author rassa
  */
 public class FXMLController implements Initializable {
-    private double montant;
     @FXML
     private TextField card;
     @FXML
@@ -39,7 +41,8 @@ public class FXMLController implements Initializable {
     private TextField cvc;
     @FXML
     private Button pay;
-    
+    private double montant;
+User client=new User("oussema","mejri","mejri.oussema@esprit.tn");
   
    /* public FXMLController(double montant) {
         this.montant = montant;
@@ -54,20 +57,22 @@ public class FXMLController implements Initializable {
     }    
 
     @FXML
-    private void Pay(ActionEvent event) throws StripeException {
+    private void Pay(ActionEvent event) throws StripeException, Exception {
        // PaymentApi.pay();
         System.out.println(isNum(m_exp.getText()));
           if ((isValidVisaCardNo(card.getText()) && (!card.getText().isEmpty()) && (isNum(card.getText())))
                 && (!m_exp.getText().isEmpty()) && (isNum(m_exp.getText()))
                 && (parseInt(y_exp.getText()) >= LocalDate.now().getYear()) && (!y_exp.getText().isEmpty()) && (isNum(y_exp.getText())) && (isNum(cvc.getText()))) {
-             float f = (float) 4000.5;
+             float f = (float) 3000.5;
              int k =floatToInt(f);
           PaymentApi.pay(k);
-
+          MailSender.sendMail(client);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Paiement");
             alert.setContentText("Paiement effectué avec succès. Un mail a été envoyé qui contient vos informations\nRedirection vers l'athentification.");
             alert.show();
+        CommandeService c =new CommandeService();
+         c.payer(35);
             
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -103,7 +108,6 @@ public class FXMLController implements Initializable {
     public static int floatToInt(float value) {
     return (int) value;
 }
-
     void setMontant(double montant) {
         this.montant=montant;
     }
