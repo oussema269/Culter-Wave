@@ -23,22 +23,22 @@
       
       <Button fx:id="btn_modif" layoutX="241.0" layoutY="342.0" mnemonicParsing="false" onAction="#checkmod" prefHeight="25.0" prefWidth="78.0" text="modifier" />
       <Button fx:id="btn_supp" layoutX="417.0" layoutY="342.0" mnemonicParsing="false" onAction="#checkdel" prefHeight="25.0" prefWidth="78.0" text="supprimer" />
-      <TextField fx:id="idreclam" layoutX="123.0" layoutY="25.0" prefHeight="25.0" prefWidth="34.0" />
+      <TextField fx:id="idreclam" layoutX="123.0" layoutY="25.0" prefHeight="25.0" prefWidth="34.0" visible="false" />
       <TextArea fx:id="rep" layoutX="375.0" layoutY="51.0" prefHeight="57.0" prefWidth="200.0" />
       <TableView fx:id="tabrep" layoutX="340.0" layoutY="116.0" onMouseClicked="#selected" prefHeight="200.0" prefWidth="235.0">
         <columns>
-          <TableColumn fx:id="idreponse1" prefWidth="46.0" text="id rep" />
+          <TableColumn fx:id="idreponse1" prefWidth="46.0" text="id rep" visible="false" />
           <TableColumn fx:id="idreclam3" prefWidth="46.0" text="id rec" />
-            <TableColumn fx:id="reponse2" prefWidth="142.0" text="votre reponse" />
+            <TableColumn fx:id="reponse2" prefWidth="188.0" text="votre reponse" />
         </columns>
       </TableView>
       <TableView fx:id="tabrec" layoutX="23.0" layoutY="107.0" onMouseClicked="#selectedrec" prefHeight="200.0" prefWidth="253.0">
         <columns>
-          <TableColumn fx:id="idreclam2" prefWidth="46.0" text="id rec" />
-          <TableColumn fx:id="contenureclam" prefWidth="206.0" text="contenu Reclamation" />
+          <TableColumn fx:id="idreclam2" prefWidth="46.0" text="id rec" visible="false" />
+          <TableColumn fx:id="contenureclam" prefWidth="252.0" text="contenu Reclamation" />
         </columns>
       </TableView>
-      <TextField fx:id="idreponse" layoutX="458.0" layoutY="22.0" prefHeight="25.0" prefWidth="34.0" />
+      <TextField fx:id="idreponse" layoutX="458.0" layoutY="22.0" prefHeight="25.0" prefWidth="34.0" visible="false" />
       
    </children>
 </AnchorPane>

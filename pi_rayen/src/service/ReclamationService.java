@@ -25,8 +25,8 @@ public  class ReclamationService implements IService<Reclamation>{
     
     @Override
     public void insert(Reclamation p){
-        String requete="insert into reclamation (id_reclamateur, id_cible_reclamation , type_reclamation , contenu) values"
-                + "('"+p.getid_reclamateur()+"','"+p.getid_cible_reclamation()+"','" +p.gettype_reclamation()+ "','" +p.getcontenu()+"')";
+        String requete="insert into reclamation (id_reclamateur, id_cible_reclamation , type_reclamation , contenu , datepro ) values"
+                + "('"+p.getid_reclamateur()+"','"+p.getid_cible_reclamation()+"','" +p.gettype_reclamation()+ "','" +p.getcontenu()+"','" + p.getDatecr() +"')";
         try {
             Statement ste=conn.createStatement();
             ste.executeUpdate(requete);
@@ -65,7 +65,7 @@ public  class ReclamationService implements IService<Reclamation>{
 
     @Override
     public void update(Reclamation t) {
-        String requete="UPDATE `reclamation` SET `id_reclamateur`='"+ t.getid_reclamateur() +" ' ,`id_cible_reclamation`= '"+ t.getid_cible_reclamation()+ "' ,`type_reclamation`='  "+ t.gettype_reclamation()   + "' ,`contenu`='  " + t.getcontenu() +  "' where id_reclamation = '" + t.getid_reclamation() + "'" ;
+        String requete="UPDATE `reclamation` SET `id_reclamateur`='"+ t.getid_reclamateur() +" ' ,`id_cible_reclamation`= '"+ t.getid_cible_reclamation()+ "' ,`type_reclamation`='  "+ t.gettype_reclamation()   + "' ,`contenu`='  " + t.getcontenu() +"' ,`datepro`='  " + t.getDatecr() +  "' where id_reclamation = '" + t.getid_reclamation() + "'" ;
         try {
             Statement st=conn.createStatement();
             st.executeUpdate(requete);

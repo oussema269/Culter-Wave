@@ -5,106 +5,64 @@
  */
 package rayen.GUI;
 
-import connect_rayen.Connxion_rayen;
-import entity.User;
 import entity.Reclamation;
-import entity.Reponse;
-import service.UserService;
-import service.ReclamationService;
-import service.ReponseService;
-import utils.DataSource;
-import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import java.sql.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
-import javafx.animation.Animation;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.RotateTransition;
-import javafx.animation.Timeline;
-import javafx.application.Application;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.TableView;
-import javafx.stage.Stage;
-import javafx.util.Callback;
-import utils.DataSource;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
-import javafx.scene.Group;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.util.Duration;
-import javax.mail.*;
-import javax.mail.internet.*;
+import javafx.stage.Stage;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import service.ReclamationService;
+import utils.DataSource;
+
 /**
  * FXML Controller class
  *
  * @author rayen
  */
-public class ReclamationController implements Initializable {
-
-    @FXML
-    private TextField idd;
+public class ReclamationuserController implements Initializable {
 
     @FXML
     private TextField id_reclamateur1;
-
     @FXML
     private TextField id_cible_reclamation1;
- 
-
-    @FXML
-    private TextField cont;
-
     @FXML
     private Button btn_ajout;
-
-    @FXML
-    private Button btn_modif;
-
-    @FXML
-    private Button btn_supp;
-
     @FXML
     private TableView<Reclamation> table;
 
@@ -125,7 +83,8 @@ public class ReclamationController implements Initializable {
     
     @FXML
     private TableColumn<Reclamation, String> dateprob;
-    
+    @FXML
+    private TextField cont;
     @FXML
     private TextField searchField;
     @FXML
@@ -133,7 +92,7 @@ public class ReclamationController implements Initializable {
     @FXML
     private ComboBox<String> type1 = new ComboBox<>();
     @FXML
-    private DatePicker datepro= new DatePicker();
+    private DatePicker datepro;
 
     /**
      * Initializes the controller class.
@@ -141,9 +100,9 @@ public class ReclamationController implements Initializable {
     Connection mc;
     PreparedStatement ste;
     ObservableList<Reclamation> reclist;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         ObservableList<String> items2 = FXCollections.observableArrayList(
                 "Technique",
                 "qualité",
@@ -163,9 +122,8 @@ public class ReclamationController implements Initializable {
         searchField.textProperty().addListener((observable, oldValue, newValue) -> search());
         sortBox.setOnAction(event -> sort());
         afficher();
-
-    }
-    @FXML
+    }    
+@FXML
 private void search() {
     String query = searchField.getText();
     ObservableList<Reclamation> filteredList = FXCollections.observableArrayList();
@@ -174,6 +132,7 @@ private void search() {
             filteredList.add(reclamation);
         }
     }
+    
     table.setItems(filteredList);
 }
 @FXML
@@ -195,13 +154,7 @@ private void sort() {
     }
     table.setItems(reclist);
 }
-    
-
-
-
-
-
-    private void afficher() {
+private void afficher() {
 
         mc = DataSource.getInstance().getCnx();
         reclist = FXCollections.observableArrayList();
@@ -245,8 +198,7 @@ private void sort() {
         refresh();
 
     }
-
-    public void refresh() {
+public void refresh() {
         reclist.clear();
         mc = DataSource.getInstance().getCnx();
         reclist = FXCollections.observableArrayList();
@@ -280,37 +232,25 @@ private void sort() {
         table.setItems(reclist);
 
     }
-
-    @FXML
-    private void selected(MouseEvent event) {
-        Reclamation clicked = table.getSelectionModel().getSelectedItem();
-        idd.setText(String.valueOf(clicked.getid_reclamation()));
-        id_reclamateur1.setText(String.valueOf(clicked.getid_reclamateur()));
-        id_cible_reclamation1.setText(String.valueOf(clicked.getid_cible_reclamation()));
-        type1.setValue(String.valueOf(clicked.gettype_reclamation()));
-        cont.setText(String.valueOf(clicked.getcontenu())); 
-        
-        
-        
-    }
     @FXML
     private void checkadd() {
 
-        String testidrec = idd.getText();
+        
         String testidreclamateur = id_reclamateur1.getText();
         String testciblerec = id_cible_reclamation1.getText();
+        String testtype1 = type1.getValue();
         
         String testconenu = cont.getText();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
-         if (testidrec.isEmpty()) {
-            id_reclamateur1.setText("choisis une reclamation");
-        } else if (testidreclamateur.isEmpty()) {
+         if (testidreclamateur.isEmpty()) {
             id_reclamateur1.setText("ici");
+        }else if (testtype1.isEmpty()) {
+            cont.setText("choisis un type");
         } else if (testciblerec.isEmpty()) {
-            id_cible_reclamation1.setText("ici");
+            id_cible_reclamation1.setText("choisis un cible");
         } else if (testconenu.isEmpty()) {
-            cont.setText("ici");
+            cont.setText("faut de contenu");
         }else {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
@@ -323,7 +263,7 @@ private void sort() {
                     r1.setDatecr(formattedDate);
                     ReclamationService rs = new ReclamationService();
                     rs.insert(r1);
-                    handle();
+                   handle();
                 } catch (NumberFormatException ex) {
                     Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -373,76 +313,9 @@ private void sort() {
             System.out.println("Failed to send email. Error message: " + e.getMessage());
         }
     }
+
+
     @FXML
-    private void checkmod() {
-
-        String testidrec = idd.getText();
-        String testidreclamateur = id_reclamateur1.getText();
-        String testciblerec = id_cible_reclamation1.getText();
-        String testtype = type1.getValue();
-        String testconenu = cont.getText();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-
-         if (testidrec.isEmpty()) {
-            id_reclamateur1.setText("choisis une reclamation");
-        } else if (testidreclamateur.isEmpty()) {
-            id_reclamateur1.setText("ici");
-        } else if (testciblerec.isEmpty()) {
-            id_cible_reclamation1.setText("ici");
-        } else if (testtype.isEmpty()) {
-            type1.setValue("ici");
-        } else if (testconenu.isEmpty()) {
-            cont.setText("ici");
-        }else {
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                try {
-
-                    Reclamation r1 = new Reclamation(Integer.parseInt(idd.getText()), Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getValue(), cont.getText());
-                    LocalDate selectedDate = datepro.getValue();
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                    String formattedDate = selectedDate.format(formatter);
-                    r1.setDatecr(formattedDate);
-                    ReclamationService rs = new ReclamationService();
-                    rs.update(r1);
-                } catch (NumberFormatException ex) {
-                    Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                refresh();
-            }
-
-        }
-
-    }
-    @FXML
-    private void checkdel() {
-
-        String testidrec = idd.getText();
-        
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-
-         if (testidrec.isEmpty()) {
-            id_reclamateur1.setText("choisis une reclamation");
-        } else {
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                try {
-
-                    Reclamation r1 = new Reclamation( Integer.parseInt(idd.getText()),Integer.parseInt(id_reclamateur1.getText()), Integer.parseInt(id_cible_reclamation1.getText()), type1.getValue(), cont.getText());
-                    ReclamationService rs = new ReclamationService();
-                    
-                    rs.delete(r1);
-                } catch (NumberFormatException ex) {
-                    Logger.getLogger(ReclamationController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                refresh();
-            }
-
-        }
-
-    }
-    
-@FXML
 private void Statistique() {
     // Create a map to store the frequency of each type
     Map<String, Integer> typeFrequency = new HashMap<>();
@@ -483,10 +356,5 @@ private void Statistique() {
     stage.setScene(scene);
     stage.show();
 }
-
-
-
-
-
-
+    
 }

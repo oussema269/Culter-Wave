@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import service.ReclamationService;
 import service.ReponseService;
 import utils.DataSource;
@@ -258,6 +266,7 @@ public class ReponseController implements Initializable {
                     Reponse r1 = new Reponse( Integer.parseInt(idreclam1.getText()), rep.getText());
                     ReponseService rs = new ReponseService();
                     rs.insert(r1);
+                    handle();
                 } catch (NumberFormatException ex) {
                     Logger.getLogger(ReponseController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -325,5 +334,45 @@ public class ReponseController implements Initializable {
 
         }
 
+    }
+    public void handle() {
+        // Recipient's email address
+        String to = "rayen.khalfaoui@esprit.tn";
+        // Sender's email address
+        String from = "culturewave2a14@outlook.com";
+        // Sender's email password
+        String password = "aqwzsx@123456";
+
+        // Setup mail server properties
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.office365.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        // Create a new session with an authenticator
+        Session session;
+        session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        });
+        try {
+            // Create a new message
+            Message message = new MimeMessage(session);
+            // Set the sender, recipient, subject and body of the message
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject("Reponse");
+            message.setText("vous avez recu une reponse sur votre reclamation  ");
+
+            // Send the message
+            Transport.send(message);
+            System.out.println("Email sent successfully!");
+
+        } catch (MessagingException e) {
+            System.out.println("Failed to send email. Error message: " + e.getMessage());
+        }
     }
 }

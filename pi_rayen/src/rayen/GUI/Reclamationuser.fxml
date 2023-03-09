@@ -11,32 +11,29 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="563.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rayen.GUI.ReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="563.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rayen.GUI.ReclamationuserController">
      <children>
-      <Label layoutX="369.0" layoutY="-1.0" text="Gestion Reclamation">
+      <Label layoutX="384.0" layoutY="10.0" text="Reclamation">
          <font>
             <Font size="21.0" />
          </font></Label>
       <TextField fx:id="id_reclamateur1" layoutX="61.0" layoutY="59.0" />
       <TextField fx:id="id_cible_reclamation1" layoutX="61.0" layoutY="99.0" />
-      <Button fx:id="btn_ajout" layoutX="118.0" layoutY="492.0" mnemonicParsing="false" onAction="#checkadd" prefHeight="25.0" prefWidth="78.0" text="Ajouter" />
+      <Button fx:id="btn_ajout" layoutX="417.0" layoutY="489.0" mnemonicParsing="false" onAction="#checkadd" prefHeight="41.0" prefWidth="115.0" text="Ajouter" />
       <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="votre id" />
       <Text layoutX="12.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cible rec" />
       <Text layoutX="12.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="contenu" />
-      <TableView fx:id="table" layoutX="215.0" layoutY="74.0" onMouseClicked="#selected" onMousePressed="#selected" prefHeight="406.0" prefWidth="649.0">
+      <TableView fx:id="table" layoutX="215.0" layoutY="74.0" prefHeight="406.0" prefWidth="649.0">
         <columns>
-          <TableColumn fx:id="idrec" prefWidth="30.0" text="id" visible="false" />
-          <TableColumn fx:id="reclamateur" prefWidth="73.0" text="reclamateur" />
-          <TableColumn fx:id="cible" prefWidth="42.0" text="cible" />
+          <TableColumn fx:id="idrec" minWidth="0.0" prefWidth="0.0" text="id" />
+          <TableColumn fx:id="reclamateur" prefWidth="78.0" text="reclamateur" />
+          <TableColumn fx:id="cible" prefWidth="67.0" text="cible" />
           <TableColumn fx:id="type" prefWidth="68.0" text="type" />
-          <TableColumn fx:id="contenu2" prefWidth="282.0" text="contenu" />
-            <TableColumn fx:id="dateprob" prefWidth="183.0" text="date probleme" />
+          <TableColumn fx:id="contenu2" prefWidth="228.0" text="contenu" />
+            <TableColumn fx:id="dateprob" prefWidth="228.0" text="date probleme" />
         </columns>
       </TableView>
-      <Button fx:id="btn_modif" layoutX="402.0" layoutY="492.0" mnemonicParsing="false" onAction="#checkmod" prefHeight="25.0" prefWidth="78.0" text="modifier" />
-      <Button fx:id="btn_supp" layoutX="651.0" layoutY="492.0" mnemonicParsing="false" onAction="#checkdel" prefHeight="25.0" prefWidth="78.0" text="supprimer" />
       <TextField fx:id="cont" layoutX="61.0" layoutY="179.0" prefHeight="103.0" prefWidth="149.0" />
-      <TextField fx:id="idd" layoutX="123.0" layoutY="25.0" prefHeight="25.0" prefWidth="34.0" visible="false" />
       <TextField fx:id="searchField" layoutX="480.0" layoutY="38.0" onAction="#search" prefHeight="25.0" prefWidth="139.0" />
       <Text layoutX="369.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="chercher par type:" />
       <ComboBox fx:id="sortBox" layoutX="249.0" layoutY="38.0" onAction="#sort" prefHeight="25.0" prefWidth="104.0" promptText="Trier" />

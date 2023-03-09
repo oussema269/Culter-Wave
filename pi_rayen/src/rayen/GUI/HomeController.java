@@ -36,7 +36,7 @@ public class HomeController implements Initializable {
     @FXML
     private Button btn_rep;
     @FXML
-    private Button btn_recmod;
+    private Button btn_rec1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        btn_rec.setOnAction(event -> {
@@ -56,6 +56,18 @@ public class HomeController implements Initializable {
 
             try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("Reponse.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+              btn_rec1.setOnAction(event -> {
+
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("Reclamationuser.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

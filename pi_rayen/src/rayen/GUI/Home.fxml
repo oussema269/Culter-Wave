@@ -5,7 +5,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rayen.GUI.HomeController">
    <children>
-      <Button fx:id="btn_rec" layoutX="79.0" layoutY="39.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="122.0" text="Reclamation" />
+      <Button fx:id="btn_rec" layoutX="79.0" layoutY="39.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="122.0" text="Reclamation admin" />
       <Button fx:id="btn_rep" layoutX="415.0" layoutY="39.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="122.0" text="Reponse" />
+      <Button fx:id="btn_rec1" layoutX="79.0" layoutY="164.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="122.0" text="Reclamation user" />
    </children>
 </AnchorPane>

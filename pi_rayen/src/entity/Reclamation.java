@@ -15,6 +15,16 @@ public class Reclamation {
     private int id_cible_reclamation;
     private String type_reclamation;
     private String contenu;
+    private String Datecr;
+
+    public String getDatecr() {
+        return Datecr;
+    }
+
+    public void setDatecr(String Datecr) {
+        this.Datecr = Datecr;
+    }
+    
    
     
 
@@ -39,6 +49,17 @@ public class Reclamation {
         this.type_reclamation = type_reclamation;
         this.contenu = contenu;
         
+        
+        
+        
+    }
+     public Reclamation(int id_reclamateur,int id_cible_reclamation, String type_reclamation, String contenu,String datec ) {
+        
+        this.id_reclamateur = id_reclamateur;
+        this.id_cible_reclamation = id_cible_reclamation;
+        this.type_reclamation = type_reclamation;
+        this.contenu = contenu;
+        this.Datecr = datec;
         
         
         
