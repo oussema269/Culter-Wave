@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="bg-form" stylesheets="@interfacelogin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.Dashbord_clientController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="808.0" styleClass="bg-form" stylesheets="@interfacelogin.css">
+         <children>
+            <VBox id="btn6" layoutY="115.0" prefHeight="418.0" prefWidth="232.0" style="-fx-background-color: transparent;">
+               <children>
+                  <Button fx:id="btn1" mnemonicParsing="false" onMouseClicked="#afficheUtilisateurs" prefHeight="48.0" prefWidth="232.0" style="-fx-background-color: transparent;" stylesheets="@interfacelogin.css" text="ACCUIEL">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-34.0">
+                           <image>
+                              <Image url="@../image/home-removebg-preview.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="bg-form" />
+                        <String fx:value="login-btn" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="btnevent" mnemonicParsing="false" onMouseClicked="#gotoeventvendeur" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: transparent;" stylesheets="@interfacelogin.css" text="Envenement">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-22.0">
+                           <image>
+                              <Image url="@../image/event-removebg-preview%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="bg-form" />
+                        <String fx:value="login-btn" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="btn3" mnemonicParsing="false" onMouseClicked="#gotoformationtoclient" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: transparent;" stylesheets="@interfacelogin.css" text="Formation">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-33.0">
+                           <image>
+                              <Image url="@../image/formation-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="bg-form" />
+                        <String fx:value="login-btn" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="btn4" mnemonicParsing="false" onMouseClicked="#gotoproduit" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: transparent;" stylesheets="@interfacelogin.css" text="Produit ">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-42.0">
+                           <image>
+                              <Image url="@../image/produit-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="bg-form" />
+                        <String fx:value="login-btn" />
+                     </styleClass>
+                  </Button>
+                  <Button id="btn6" fx:id="btn6" mnemonicParsing="false" onMouseClicked="#settings" prefHeight="51.0" prefWidth="238.0" style="-fx-background-color: transparent;" stylesheets="@interfacelogin.css" text="Paramètres">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
+                           <image>
+                              <Image url="@../../image/para-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="bg-form" />
+                        <String fx:value="login-btn" />
+                     </styleClass>
+                  </Button>
+                  <Button id="btn5" fx:id="btn5" mnemonicParsing="false" onMouseClicked="#GoToRec" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: transparent;" stylesheets="@interfacelogin.css" text="Reclamation ">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-18.0">
+                           <image>
+                              <Image url="@../image/reclamation-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="bg-form" />
+                        <String fx:value="login-btn" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="btn7" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="43.0" prefWidth="249.0" style="-fx-background-color: transparent;" stylesheets="@interfacelogin.css" text="Déconnecte" translateY="76.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-20.0">
+                           <image>
+                              <Image url="@../image/logout-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <styleClass>
+                        <String fx:value="bg-form" />
+                        <String fx:value="login-btn" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </VBox>
+            <TextField fx:id="textId" layoutX="385.0" layoutY="157.0" prefHeight="26.0" prefWidth="207.0" promptText="Id" style="-fx-border-color: #c86c34;" visible="false" />
+            <TextField fx:id="text1" layoutX="398.0" layoutY="176.0" prefHeight="26.0" prefWidth="207.0" promptText="Nom" style="-fx-border-color: #566588;" styleClass="textfield" stylesheets="@interfacelogin.css" />
+            <TextField id="label_pre" fx:id="text2" editable="false" layoutX="398.0" layoutY="250.0" prefHeight="26.0" prefWidth="207.0" promptText="Prénom" style="-fx-border-color: #566588;" styleClass="textfield" stylesheets="@interfacelogin.css" />
+            <TextField id="label_pre" fx:id="text3" layoutX="398.0" layoutY="313.0" prefHeight="26.0" prefWidth="207.0" promptText="Email" style="-fx-border-color: #566588;" styleClass="textfield" stylesheets="@interfacelogin.css" />
+            <Separator layoutX="-4.0" layoutY="56.0" prefHeight="18.0" prefWidth="814.0" />
+            <Label disable="true" layoutX="257.0" prefHeight="56.0" prefWidth="232.0" text="Profile Vendeur" textAlignment="CENTER" underline="true">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="219.0" layoutX="640.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

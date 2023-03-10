@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="433.0" prefWidth="706.0" styleClass="bg-form" stylesheets="@interfacelogin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.ListeventController1">
+   <children>
+      <Text layoutX="32.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des evennement" wrappingWidth="282.93670654296875" AnchorPane.leftAnchor="24.0">
+         <font>
+            <Font name="Arial" size="24.0" />
+         </font>
+      </Text>
+      <TableView fx:id="EVENTTAB" layoutX="14.0" layoutY="151.0" prefHeight="218.0" prefWidth="683.0">
+        <columns>
+          <TableColumn fx:id="nom" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="description" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="lieu" prefWidth="75.0" text="lieu" />
+            <TableColumn fx:id="prix" prefWidth="75.0" text="prix" />
+            <TableColumn fx:id="sponsor_id" prefWidth="66.39996337890625" text="sponsor_id" />
+            <TableColumn fx:id="date" prefWidth="96.0" text="date" />
+            <TableColumn fx:id="nb_participants" prefWidth="88.80007934570312" text="nb_participants" />
+            <TableColumn fx:id="type_evenement" prefWidth="116.0001220703125" text="type_evenement" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="76.0" prefHeight="65.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <FontAwesomeIcon fill="#566588" glyphName="USER_PLUS" onMouseClicked="#AddEVENT" size="2em" text="" />
+            <FontAwesomeIcon fill="GREEN" glyphName="REFRESH" layoutX="10.0" layoutY="51.0" onMouseClicked="#refreshtable" size="2em" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="634.0" layoutY="10.0" prefHeight="27.0" prefWidth="42.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FontAwesomeIcon fill="RED" glyphName="CLOSE" layoutX="674.0" layoutY="30.0" onMouseClicked="#close" text="" wrappingWidth="11.0" />
+         </children>
+      </HBox>
+      <Button layoutX="14.0" layoutY="384.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: transparent;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="supprimer" textFill="WHITE" />
+      <TextField fx:id="search" layoutX="488.0" layoutY="96.0" onKeyPressed="#filter" onKeyReleased="#filter" onKeyTyped="#filter" promptText="serch" styleClass="textfield" stylesheets="@interfacelogin.css" />
+      <Button layoutX="535.0" layoutY="384.0" mnemonicParsing="false" onMouseClicked="#generer" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: transparent;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Imprimer " textFill="WHITE" />
+      <Separator layoutY="73.0" prefHeight="6.0" prefWidth="706.0" />
+      <Button layoutX="278.0" layoutY="384.0" mnemonicParsing="false" onAction="#gotoaddsponsort" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: transparent;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="visiter list sponsor " />
+   </children>
+</AnchorPane>

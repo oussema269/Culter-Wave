@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane id="AnchorPane" onMouseClicked="#commnder" prefHeight="597.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.StoreController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="1000.0" styleClass="white-background" stylesheets="@Style.css">
+         <children>
+            <ImageView fitHeight="46.0" fitWidth="199.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <Separator opacity="0.25" orientation="VERTICAL" prefHeight="37.0" prefWidth="0.0" style="-fx-background-color: brown;">
+               <HBox.margin>
+                  <Insets left="20.0" top="5.0" />
+               </HBox.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Separator>
+            <HBox alignment="CENTER" prefHeight="63.0" prefWidth="242.0" spacing="20.0" />
+            <Pane prefHeight="64.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="searchField" layoutX="-6.0" layoutY="24.0" prefHeight="32.0" prefWidth="160.0" stylesheets="@Style.css">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <styleClass>
+                        <String fx:value="recherstyle" />
+                        <String fx:value="transparent-background" />
+                     </styleClass>
+                  </TextField>
+                  <ImageView fitHeight="30.0" fitWidth="43.0" layoutX="173.0" layoutY="25.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/download.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox fx:id="ecran_id" layoutX="418.0" layoutY="103.0" prefHeight="322.0" prefWidth="552.0" style="-fx-border-color: gray; -fx-background-color: white;" styleClass="list-cell" stylesheets="@Style.css">
+         <children>
+            <VBox fx:id="left_box" alignment="BASELINE_LEFT" prefHeight="295.0" prefWidth="158.0" spacing="20.0" styleClass="white-background" stylesheets="@Style.css">
+               <children>
+                  <Label alignment="TOP_LEFT" text="Produit">
+                     <padding>
+                        <Insets left="65.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txt_produit" prefHeight="20.0" prefWidth="150.0" />
+                  <Label prefHeight="18.0" prefWidth="57.0" text="Prix">
+                     <VBox.margin>
+                        <Insets left="70.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="text_prix" />
+                  <Label prefHeight="18.0" prefWidth="72.0" text="Stock">
+                     <VBox.margin>
+                        <Insets left="70.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="text_stock" />
+               </children>
+            </VBox>
+            <VBox fx:id="vbox" prefHeight="303.0" prefWidth="277.0">
+               <HBox.margin>
+                  <Insets left="80.0" />
+               </HBox.margin>
+            </VBox>
+         </children></HBox>
+      <WebView fx:id="chat_id" layoutX="15.0" layoutY="69.0" prefHeight="511.0" prefWidth="381.0" />
+      <ButtonBar layoutX="631.0" layoutY="496.0" prefHeight="46.0" prefWidth="129.0">
+        <buttons>
+          <Button fx:id="precedant" mnemonicParsing="false" onMouseClicked="#showPrecedant" text="&lt;&lt;" />
+            <Button fx:id="suivant" mnemonicParsing="false" onMouseClicked="#showSuivant" text="&gt;&gt;" />
+        </buttons>
+      </ButtonBar>
+      <TextField fx:id="textId" layoutY="127.0" opacity="0.0" />
+      <Button fx:id="btncommander" layoutX="667.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#commander" prefHeight="32.0" prefWidth="108.0" style="-fx-background-color: green; -fx-text-fill: white;" text="Commander" />
+      <Button fx:id="id_retour" layoutX="8.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#retrour" style="-fx-background-color: #ECE4E3; -fx-text-fill: black;" text="&lt;&lt;" />
+      <Button fx:id="btnpanier" layoutX="542.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#gotopanier" prefHeight="32.0" prefWidth="108.0" style="-fx-background-color: gray; -fx-text-fill: white;" text="panier" />
+   </children>
+</AnchorPane>

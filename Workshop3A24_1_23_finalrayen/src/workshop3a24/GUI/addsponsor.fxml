@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.AddsponsorController">
+   <children>
+      <VBox layoutX="4.0" layoutY="63.0" prefHeight="400.0" prefWidth="50.0" styleClass="bg-form" stylesheets="@interfacelogin.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter sponsor">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <Pane prefHeight="6.0" prefWidth="415.0" style="-fx-background-color: #c86c34;">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets top="1.0" />
+               </padding>
+            </Pane>
+            <Pane prefHeight="213.0" prefWidth="634.0">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <TextField fx:id="nom" layoutX="54.0" layoutY="39.0" prefHeight="25.0" prefWidth="186.0" promptText="Nom_Sponsor" styleClass="textfield" stylesheets="@interfacelogin.css" />
+                  <Pane layoutX="355.0" layoutY="1.0" prefHeight="291.0" prefWidth="242.0">
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                     <children>
+                        <ImageView fx:id="imgajoutincours" fitHeight="150.0" fitWidth="200.0" layoutX="21.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: white;" />
+                        <Label fx:id="imgpathttt" layoutX="1.0" layoutY="182.0" prefHeight="66.0" prefWidth="235.0" text="path of files " visible="false" />
+                        <Button fx:id="Timage" layoutX="78.0" layoutY="256.0" mnemonicParsing="false" onAction="#addimgcours" prefHeight="25.0" prefWidth="120.0" style="-fx-background-color: transparent;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="choisir photo" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="12.0" />
+                           </font></Button>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Button mnemonicParsing="false" onMouseClicked="#Save" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Enregistrer" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Pane prefHeight="18.0" prefWidth="634.0" />
+            <Button mnemonicParsing="false" onMouseClicked="#clean" prefHeight="26.0" prefWidth="202.0" style="-fx-background-color: transparent;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Supprimer" textFill="WHITE">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="350.0">
+               <VBox.margin>
+                  <Insets bottom="50.0" left="150.0" right="150.0" top="50.0" />
+               </VBox.margin>
+               <children>
+                  <Text fill="RED" onMouseClicked="#retour" strokeType="OUTSIDE" strokeWidth="0.0" text="Retour" textAlignment="CENTER" underline="true" wrappingWidth="61.3367919921875" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" prefHeight="49.0" prefWidth="97.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FontAwesomeIcon glyphName="CLOSE" onMouseClicked="#close">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </FontAwesomeIcon>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

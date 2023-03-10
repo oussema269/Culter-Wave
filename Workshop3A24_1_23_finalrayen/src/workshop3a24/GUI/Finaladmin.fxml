@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="735.0" prefWidth="1000.0" styleClass="bg-form" stylesheets="@interfacelogin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.FinaladminController">
+   <children>
+      <Pane layoutX="8.0" layoutY="83.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3.0" prefWidth="947.0" styleClass="bg-form" stylesheets="@interfacelogin.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="83.0" />
+      <TableView fx:id="table" layoutX="371.0" layoutY="267.0" prefHeight="396.0" prefWidth="572.0" AnchorPane.leftAnchor="371.0" AnchorPane.rightAnchor="23.0">
+        <columns>
+          <TableColumn fx:id="IDcol" prefWidth="52.00006103515625" text="ID" visible="false" />
+          <TableColumn fx:id="TITREcol" prefWidth="83.199951171875" text="Titre" />
+            <TableColumn fx:id="DESCRIPTIONcol" maxWidth="3000.0" prefWidth="138.4000244140625" text="Description" />
+            <TableColumn fx:id="debut" prefWidth="106.39996337890625" text="Date de Debut" />
+            <TableColumn fx:id="fin" prefWidth="94.4000244140625" text="Date de Fin" />
+            <TableColumn fx:id="Type" prefWidth="63.9998779296875" text="Type" />
+            <TableColumn fx:id="Pays" text="Pays" />
+            <TableColumn fx:id="iduser" prefWidth="105.59979248046875" text="Email" />
+            <TableColumn fx:id="name" prefWidth="105.59979248046875" text="name" />
+            <TableColumn fx:id="Conf" prefWidth="105.59979248046875" text="Confirmation" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnajouter" layoutX="61.0" layoutY="574.0" mnemonicParsing="false" onAction="#ajouter_Produit" prefHeight="26.0" prefWidth="211.0" stylesheets="@interfacelogin.css" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="bg-form" />
+            <String fx:value="login-btn" />
+         </styleClass>
+      </Button>
+      <Button fx:id="btnmodifier" layoutX="61.0" layoutY="623.0" mnemonicParsing="false" onAction="#modifier_Produit" prefHeight="26.0" prefWidth="211.0" stylesheets="@interfacelogin.css" text="Modifier" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="bg-form" />
+            <String fx:value="login-btn" />
+         </styleClass>
+      </Button>
+      <Button fx:id="btnsupprimer" layoutX="61.0" layoutY="694.0" mnemonicParsing="false" onAction="#supprimer_Produit" prefHeight="26.0" prefWidth="211.0" style="-fx-background-color: red;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Button>
+      
+      <Button fx:id="accept" layoutX="519.0" layoutY="694.0" mnemonicParsing="false" onAction="#aceppt" prefHeight="31.0" prefWidth="120.0" stylesheets="@interfacelogin.css" text="accept" textFill="WHITE" AnchorPane.rightAnchor="319.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="bg-form" />
+            <String fx:value="login-btn" />
+         </styleClass>
+      </Button>
+      <Button fx:id="refuser" layoutX="703.0" layoutY="694.0" mnemonicParsing="false" onAction="#refuserr" prefHeight="31.0" prefWidth="120.0" stylesheets="@interfacelogin.css" text="refuser" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="bg-form" />
+            <String fx:value="login-btn" />
+         </styleClass>
+      </Button>
+      <TextField fx:id="search" layoutX="699.0" layoutY="232.0" onKeyPressed="#filter" onKeyReleased="#filter" onKeyTyped="#filter" prefHeight="26.0" prefWidth="180.0" promptText="Search" />
+      <DatePicker fx:id="filterbyDate" layoutX="523.0" layoutY="232.0" prefHeight="25.0" prefWidth="150.0" promptText="Seach by date" />
+      <ChoiceBox fx:id="typefx" layoutX="191.0" layoutY="427.0" prefWidth="150.0" />
+      <TextField fx:id="descriptionfx" alignment="CENTER" layoutX="28.0" layoutY="465.0" prefHeight="74.0" prefWidth="291.0" promptText="Description" />
+      <Label layoutX="34.0" layoutY="404.0" text="Type" textFill="#c86c34">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="342.0" text="Pays" textFill="#c86c34">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="titrefx" layoutX="24.0" layoutY="277.0" promptText="Titre" />
+      <ChoiceBox fx:id="paysfx" layoutX="193.0" layoutY="378.0" prefWidth="150.0" />
+      <DatePicker fx:id="finpicker" layoutX="193.0" layoutY="329.0" prefHeight="25.0" prefWidth="150.0" promptText="Date-Fin" />
+      <DatePicker fx:id="debutpicker" layoutX="191.0" layoutY="277.0" prefHeight="25.0" prefWidth="150.0" promptText="Date-Debut" />
+      <Text layoutX="373.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-background-color: transparent;" text="Dash board Admin " wrappingWidth="291.19999999999993">
+         <font>
+            <Font name="Arial Unicode MS" size="30.0" />
+         </font>
+      </Text>
+      <Button fx:id="btnroter" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#router" prefHeight="27.0" prefWidth="104.0" stylesheets="@interfacelogin.css" text="router" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="bg-form" />
+            <String fx:value="login-btn" />
+         </styleClass>
+      </Button>
+      <Circle layoutX="208.0" layoutY="167.0" radius="59.0" stroke="BLACK" strokeType="OUTSIDE">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.4280303192861153">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.02346978522837162" green="0.9052631855010986" blue="0.31740090250968933" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.7843137383460999" green="0.42352941632270813" blue="0.20392157137393951" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <cursor>
+            <Cursor fx:constant="SW_RESIZE" />
+         </cursor>
+      </Circle>
+      <Circle layoutX="855.0" layoutY="167.0" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.06818182540662365">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.18635477125644684" green="0.7894737124443054" blue="0.09356725215911865" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Circle>
+      <Text fx:id="nbraccepted" fill="WHITE" layoutX="181.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="53.599999999999966">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fx:id="nbrtotal" fill="WHITE" layoutX="828.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="53.599999999999966">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="769.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="all particption" textAlignment="CENTER" wrappingWidth="171.99996337890622" />
+      <Text fill="#fefdff" layoutX="122.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="particptions accepted" textAlignment="CENTER" wrappingWidth="171.99996337890622" />
+   </children>
+</AnchorPane>

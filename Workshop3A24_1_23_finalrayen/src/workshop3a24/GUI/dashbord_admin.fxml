@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="workshop3a24.GUI.Dashbord_adminController">
+   <children>
+      <AnchorPane layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="808.0" styleClass="bg-form" stylesheets="@interfacelogin.css">
+         <children>
+            <VBox layoutY="73.0" prefHeight="458.0" prefWidth="232.0" stylesheets="@interfacelogin.css">
+               <children>
+                  <Button id="btn1" fx:id="btn1" mnemonicParsing="false" prefHeight="50.0" prefWidth="232.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="ACCUIEL">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-34.0">
+                           <image>
+                              <Image url="@../image/home-removebg-preview.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btn8" fx:id="btnuser" mnemonicParsing="false" onMouseClicked="#Guser" prefHeight="41.0" prefWidth="232.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Utilisateur">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" translateX="-32.0">
+                           <image>
+                              <Image url="@../image/ussser-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnevent" mnemonicParsing="false" onMouseClicked="#gevent" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Envenement">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-22.0">
+                           <image>
+                              <Image url="@../image/event-removebg-preview%20(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btn3" fx:id="btn3" mnemonicParsing="false" onMouseClicked="#FormationDachboardAdmin" prefHeight="49.0" prefWidth="238.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Formation">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-33.0">
+                           <image>
+                              <Image url="@../image/formation-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btn4" fx:id="btnproduit" mnemonicParsing="false" onMouseClicked="#gotoproduit" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Produit ">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-42.0">
+                           <image>
+                              <Image url="@../image/produit-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btn5" fx:id="btn5" mnemonicParsing="false" onMouseClicked="#GoToerc" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Reclamation ">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-18.0">
+                           <image>
+                              <Image url="@../image/reclamation-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btn5" fx:id="btn51" mnemonicParsing="false" onMouseClicked="#GoTorep" prefHeight="50.0" prefWidth="249.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Reponse">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-18.0">
+                           <image>
+                              <Image url="@../image/reclamation-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btn6" fx:id="btn6" mnemonicParsing="false" prefHeight="51.0" prefWidth="238.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Paramètres">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-25.0">
+                           <image>
+                              <Image url="@../image/para-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button id="btn7" fx:id="btnlogout" mnemonicParsing="false" onMouseClicked="#logout" prefHeight="43.0" prefWidth="249.0" style="-fx-background-color: transpqront;" styleClass="login-btn" stylesheets="@interfacelogin.css" text="Déconnecte">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" translateX="-20.0">
+                           <image>
+                              <Image url="@../image/logout-removebg-preview.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <TextField fx:id="textId" layoutX="385.0" layoutY="157.0" prefHeight="26.0" prefWidth="207.0" promptText="Id" style="-fx-border-color: #c86c34;" visible="false" />
+            <TextField id="label_nom" fx:id="text1" layoutX="398.0" layoutY="176.0" prefHeight="26.0" prefWidth="207.0" promptText="Nom" style="-fx-border-color: #566588;" stylesheets="@interfacelogin.css" />
+            <TextField id="label_pre" fx:id="text2" editable="false" layoutX="398.0" layoutY="250.0" prefHeight="26.0" prefWidth="207.0" promptText="Prénom" style="-fx-border-color: #566588;" styleClass="label_pre" stylesheets="@interfacelogin.css" />
+            <TextField id="label_pre" fx:id="text3" layoutX="398.0" layoutY="313.0" prefHeight="26.0" prefWidth="207.0" promptText="Email" style="-fx-border-color: #566588;" styleClass="label_email" stylesheets="@interfacelogin.css" />
+            <Separator layoutX="104.0" layoutY="56.0" prefHeight="18.0" prefWidth="706.0" />
+            <Label disable="true" layoutX="336.0" prefHeight="56.0" prefWidth="232.0" text="Profile Adminstarteur" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="219.0" layoutX="640.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
