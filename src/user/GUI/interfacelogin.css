@@ -1,0 +1,247 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+    #label_1{
+        -fx-font-size: 35px;
+        -fx-text-fill: #6b7897;
+    }
+
+#label2{
+    -fx-font-size: 20px;
+    -fx-text-fill: #6b7897;
+   
+}
+#label3{
+    -fx-font-size: 20px;
+    -fx-text-fill: #6b7897;
+   
+}
+#label4{
+    -fx-font-size: 20px;
+    -fx-text-fill: #6b7897;
+   
+}
+#textfield{
+    -fx-background-color: #e9ebf0;
+}
+#passwordfield{
+    -fx-background-color: #e9ebf0;
+}
+
+#btn-login{
+    -fx-font-size: 24px;
+    -fx-background-color: #566588;
+    -fx-text-fill: #f3f4f7;  
+}
+
+#label6{
+    -fx-font-size: 14px;
+    -fx-text-fill: #6b7897;
+   
+}
+
+#labelsignup2{
+    -fx-font-size: 30px;
+    -fx-text-fill: #d99971;
+   
+}
+#labelnom{
+    -fx-font-size: 18px;
+    -fx-text-fill: #6b7897;
+   
+}
+#labelprenom{
+    -fx-font-size: 18px;
+    -fx-text-fill: #6b7897;
+   
+}
+#labelprenom{
+    -fx-font-size: 18px;
+    -fx-text-fill: #6b7897;
+   
+}
+#labelprenom{
+    -fx-font-size: 18px;
+    -fx-text-fill: #6b7897;
+   
+}
+#labelEmail{
+    -fx-font-size: 18px;
+    -fx-text-fill: #6b7897;
+   
+}
+
+#labelmtp{
+    -fx-font-size: 18px;
+    -fx-text-fill: #6b7897;
+   
+}
+#labeltype{
+    -fx-font-size: 18px;
+    -fx-text-fill: #6b7897;
+   
+}
+#label22{
+    -fx-background-color: #c56e33;
+   
+}
+
+     
+
+#btn-Guser{
+    -fx-font-size: 22px;
+    -fx-background-color: #e9ebf0;
+    -fx-text-fill: #c56e33;  
+}
+#btn-Gevent{
+    -fx-font-size: 22px;
+    -fx-background-color: #e9ebf0;
+    -fx-text-fill: #c56e33;  
+}
+#btn-Gformation{
+    -fx-font-size: 22px;
+    -fx-background-color: #e9ebf0;
+    -fx-text-fill: #c56e33;  
+}
+#btn-logout{
+    -fx-font-size: 22px;
+    -fx-background-color: #e9ebf0;
+    -fx-text-fill: #c56e33;  
+}
+#icon1{
+    -fx-size: 40px;
+}
+#hbox1{
+  -fx-background-color: #550015;  
+}
+#btnsignup{
+    -fx-font-size: 24px;
+    -fx-background-color: #566588;
+    -fx-text-fill: #d99971;  
+}
+#btnModifie{
+    -fx-font-size: 24px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;  
+}
+#btn2{
+    -fx-font-size: 24px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;  
+}
+#btndec{
+    -fx-font-size: 24px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;  
+}
+
+#btn1{
+    -fx-font-size: 24px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;  
+}
+#btn2{
+    -fx-font-size: 24px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;  
+}
+#btn3{
+    -fx-font-size: 24px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;  
+}
+#label_profile{
+    -fx-font-size: 24px;
+    -fx-font-family: "Arial";
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #ffffff;  
+}
+
+#btn1{
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill: #000000; 
+}
+#btn1:hover{
+    -fx-background-color:  #ffffff;
+    
+}
+#btn1:pressed{
+    
+    
+}
+#btn2{
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill: #ffffff; 
+}
+#btn3{
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill: #ffffff; 
+}
+#btn4{
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill: #ffffff; 
+}
+#btn5{
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill: #ffffff; 
+}
+#btn6{
+    -fx-font-size: 12px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill: #ffffff; 
+}
+#label_id{
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill:  #566588; 
+}
+#label_nom{
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill:  #566588; 
+}
+#label_pre{
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill:  #566588; 
+}
+#label_email{
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill:  #566588; 
+}
+#label_id{
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill:  #566588; 
+}
+#btnmodif{
+    -fx-font-size: 18px;
+    -fx-background-color: #566588;
+    -fx-text-fill: #f3f4f7;  
+}
+
+#labelprofile{
+    -fx-font-size: 24px;
+    -fx-font-family: "Arial";
+    -fx-background-color:  #e9ebf0;
+    -fx-text-fill:  #566588; 
+}
